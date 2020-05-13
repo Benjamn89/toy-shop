@@ -1,0 +1,99 @@
+@import "../../../Styles/global.scss";
+
+.navbar-div {
+  height: 8vh;
+  background: $primaryColor;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  justify-content: center;
+  align-items: center;
+  grid-gap: 20px;
+
+  > div {
+    border: solid 0.5px white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+
+    .btn-active {
+      color: black;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      color: white;
+      background: none;
+      position: relative;
+      z-index: 10;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  }
+
+  div::after {
+    content: "";
+    @include absolute(0, 0, #fff, 100%, 100%);
+    clip-path: circle(10% at 0 100%);
+    transform-origin: 0 100%;
+    transition: 0.5s;
+    z-index: 5;
+  }
+
+  div:hover::after {
+    clip-path: circle(100%);
+    transform: translateX(0);
+  }
+
+  div:hover {
+    cursor: pointer;
+  }
+  div:hover > button {
+    color: black;
+    letter-spacing: 5px;
+  }
+}
+.nav-active-div {
+  background-color: #fff;
+}
+.navbar-div * {
+  transition: 0.3s;
+}
+
+.cart-div:hover > div {
+  transform: translateX(-60px);
+  background: #ffda79;
+  pointer-events: none;
+}
+.cart-div:hover > .cart-logo1-black {
+  background: #706fd3;
+}
+.cart-logo {
+  @include absolute(13px, 20px, #fff, 20px, 12px);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  transform: rotate(-5deg);
+}
+.cart-logo1 {
+  @include absolute(11px, 15px, #fff, 6px, 19px);
+  transform: rotate(-5deg);
+}
+.cart-logo1-black {
+  @include absolute(13px, 6px, #706fd3, 13px, 18px);
+  transform: rotate(-9deg);
+}
+.cart-logo2 {
+  @include absolute(28px, 21.4px, #fff, 15px, 1.5px);
+}
+.cart-wheel1,
+.cart-wheel2 {
+  @include absolute(30.5px, 20px, #fff, 4px, 4px);
+  border-radius: 50%;
+}
+.cart-wheel2 {
+  left: 31px;
+}

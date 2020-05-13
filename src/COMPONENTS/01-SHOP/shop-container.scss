@@ -1,0 +1,9 @@
+@import "../../Styles/animation.scss";
+
+.loged-in-div {
+  @include animatePropertyIn();
+}
+
+.loged-in-div-logout {
+  @include animatePropertyOut();
+}

@@ -1,0 +1,175 @@
+@import "../../Styles/global.scss";
+@import "../../Styles/animation.scss";
+
+.login-page-div {
+  height: 100vh;
+  perspective: 800px;
+  @include animatePropertyIn();
+}
+.login-page-div * {
+  transition: 0.5s;
+}
+.login-page-div-forward {
+  @include animatePropertyOut();
+}
+.login-nav-div {
+  height: 6vh;
+  border-bottom: solid 1px $primaryColor;
+  box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  span {
+    cursor: pointer;
+  }
+}
+.actual-log-div,
+.actual-reg-div {
+  @include absolute(28%, 40%, #fff, 370px, 470px);
+  border: solid 0.5px $primaryColor;
+
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
+}
+
+.actual-reg-div {
+  padding: 20px;
+}
+.actual-log-div {
+  transform: rotateY(-180deg);
+
+  h1 {
+    font-weight: 500;
+    margin: 40px 0;
+  }
+  form {
+    position: relative;
+    .u-icon,
+    .p-icon {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      height: 18px;
+    }
+    .p-icon {
+      top: 73px;
+    }
+    span {
+      position: absolute;
+      font-size: 20px;
+      left: 30px;
+      pointer-events: none;
+      transition: 0.2s;
+    }
+    .u-span {
+      top: 17px;
+    }
+    .p-span {
+      top: 67px;
+    }
+  }
+  input {
+    display: block;
+    height: 30px;
+    outline: none;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-bottom: solid 2px lightgrey;
+    transition: 0.3s;
+    position: relative;
+    padding-left: 30px;
+  }
+  .input-err {
+    border-bottom-color: #ea2027 !important;
+  }
+  .span-focus {
+    transform: translateY(-15px);
+    font-size: 15px;
+  }
+  input:focus {
+    border-color: $primaryColor;
+  }
+
+  .inside-log-already {
+    margin: 40px 0 70px 0;
+    span {
+      margin-left: 5px;
+      color: #4a69bd;
+      cursor: pointer;
+    }
+    span:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .inside-login-p {
+    @include btnStyle(10px, 40px, 100px, 0);
+  }
+  .inside-login-p:hover {
+    transform: scale(1.1);
+    letter-spacing: 2px;
+  }
+}
+
+.flip-reg {
+  transform: rotateY(180deg);
+}
+.flip-log {
+  transform: rotateY(0);
+}
+
+.log-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.reg-log-btn {
+  @include btnStyle(10px, 40px, 100px, 150px);
+}
+.reg-log-btn:hover {
+  transform: scale(1.1);
+  letter-spacing: 2px;
+}
+
+.test {
+  height: 500px;
+  width: 300px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  border: solid 1px;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .actual-log-div,
+  .actual-reg-div {
+    left: 150px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .actual-log-div,
+  .actual-reg-div {
+    left: 100px;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .actual-log-div,
+  .actual-reg-div {
+    left: 40px;
+    width: 300px;
+  }
+}

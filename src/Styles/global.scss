@@ -1,0 +1,22 @@
+$primaryColor: #706fd3;
+@mixin absolute($top, $left, $background, $width, $height) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  background: $background;
+  width: $width;
+  height: $height;
+}
+
+@mixin btnStyle($padding, $borderR, $width, $margin) {
+  border: solid 0.5px rgb(150, 144, 144);
+  padding: $padding;
+  margin: $margin;
+  border-radius: $borderR;
+  width: $width;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 10px $primaryColor;
+  user-select: none;
+}

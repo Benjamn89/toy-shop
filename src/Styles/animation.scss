@@ -1,0 +1,20 @@
+@mixin animatePropertyIn {
+  transform: scaleX(0);
+  animation: logedOnLoad 0.3s forwards;
+}
+@mixin animatePropertyOut {
+  transform: scaleX(1);
+  animation: logedOut 0.3s forwards;
+}
+
+@keyframes logedOnLoad {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes logedOut {
+  to {
+    transform: scaleX(0);
+  }
+}

@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import LoginPage from "./COMPONENTS/00-LOGIN-PAGE/login";
+import LoggedIn from "./COMPONENTS/01-SHOP/shop-container";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux";
+
+function App(props) {
+  console.log("App -> RENDER");
+  var logged = false;
+  // Retrive data from local storage
+  var localS =
+    typeof window !== "undefined" && JSON.parse(localStorage.getItem("shop"));
+  if (localS) {
+    // Retrive the current time
+    let now = new Date();
+    now = now.getTime();
+    if (localS.time > now) {
+      logged = true;
+    }
+  }
+
+  return <div className="App">{logged ? <LoggedIn /> : <LoginPage />}</div>;
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    logOn: state.logOnReducer,
+  };
+};
+
+export default connect(mapStateToProps, null)(App);
