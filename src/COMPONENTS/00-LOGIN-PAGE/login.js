@@ -73,7 +73,7 @@ class LoginPage extends Component {
         .querySelector(".login-page-div")
         .classList.add("login-page-div-forward");
       setTimeout(() => {
-        this.props.loginSucess();
+        this.props.loginSucess(firstInput.value);
       }, 300);
     }
   };

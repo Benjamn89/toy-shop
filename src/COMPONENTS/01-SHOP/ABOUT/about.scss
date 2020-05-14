@@ -1,8 +1,16 @@
 @import "../../../Styles/global.scss";
 
-#about {
+#About {
   @include displayFlex(column);
   padding: 50px;
+  transition: 0.3s;
+  opacity: 0;
+}
+.section-in {
+  opacity: 1 !important;
+}
+.section-out {
+  opacity: 0 !important;
 }
 .about-section-div {
   @include displayFlex(row);
@@ -12,8 +20,7 @@
 .about-inside-first,
 .about-inside-second {
   @include displayFlex(column);
-  width: 40%;
-  height: 50vh;
+  @include heightWidth(50vh, 40%);
   align-items: center;
 }
 .about-inside-first {
@@ -23,8 +30,7 @@
   justify-content: space-evenly;
 }
 .toy-logo-img {
-  height: 90%;
-  width: 90%;
+  @include heightWidth(90%, 90%);
 }
 .about-second-h1 {
   font-weight: 500;
@@ -32,9 +38,18 @@
 .about-second-p span {
   font-size: 50px;
   font-weight: lighter;
+  letter-spacing: 0;
 }
+.about-second-p2 {
+}
+
 .about2-fist-p {
   line-height: 1.5;
+}
+.about2-fist-p,
+.about-second-p2,
+.about-second-p {
+  letter-spacing: 1px;
 }
 
 // ################################################################################
@@ -42,11 +57,15 @@
 .about-section-div2 {
   @include displayFlex(row);
   justify-content: center;
+  transition: 0.7s;
+  transform: scaleX(0);
+}
+.about-section-div2-active {
+  transform: scaleX(1);
 }
 .about-inside2-first,
 .about-inside2-second {
-  height: 50vh;
-  width: 40%;
+  @include heightWidth(50vh, 40%);
   display: flex;
 }
 .about-inside2-second {
@@ -85,8 +104,7 @@
   transform: translateY(-5px);
 }
 .toy-logo-img2 {
-  height: 90%;
-  width: 90%;
+  @include heightWidth(90%, 90%);
 }
 
 @media only screen and (max-width: 1000px) {

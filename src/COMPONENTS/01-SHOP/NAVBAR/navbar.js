@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import "./navbar.scss";
 
 // Import functions
-import { initialBtn, productsBtn } from "./functions";
+import { initialBtn, productsBtn, retriveSection } from "./functions";
 
 // Import all for redux
 import { connect } from "react-redux";
 import actionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
 
 class Navbar extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   componentDidMount() {
     // Set active buttons on the div and button
     initialBtn();
@@ -28,8 +32,14 @@ class Navbar extends Component {
   };
 
   moveToSection = (e) => {
+    // Taking care to the style inside the nav
     const classN = e.target.className;
     productsBtn(classN);
+    // Retrive the section name
+    const section = retriveSection(classN, this.props.logOn.view);
+    setTimeout(() => {
+      this.props.changeView(section);
+    }, 300);
   };
 
   render() {
@@ -46,7 +56,7 @@ class Navbar extends Component {
           <div className="cart-wheel1"></div>
           <div className="cart-wheel2"></div>
           <div className="cart-circle-div">
-            <span>1</span>
+            <span>{this.props.cartItems.length}</span>
           </div>
         </div>
         <div className="products-div" onClick={this.moveToSection}>
@@ -66,7 +76,15 @@ class Navbar extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     logOut: () => dispatch(actionTypes.loginSucess()),
+    changeView: (section) => dispatch(actionTypes.changeView(section)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Navbar);
+const mapStateToProps = (state) => {
+  return {
+    cartItems: state.CartReducer.items,
+    logOn: state.logOnReducer,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -10,10 +10,12 @@ import thunk from "redux-thunk";
 
 // Import Reucers
 import logOnReducer from "./REDUCERS/00-LOGIN-PAGE/reducer";
+import CartReducer from "./REDUCERS/01-CART/reducer";
 
 // combined reducers
 const rootReducer = combineReducers({
   logOnReducer,
+  CartReducer,
 });
 
 // create logger for thunk

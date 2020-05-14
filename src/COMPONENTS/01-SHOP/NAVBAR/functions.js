@@ -11,3 +11,17 @@ export const productsBtn = (classN) => {
   document.querySelector(`.${classN}`).classList.add("nav-active-div");
   document.querySelector(`.${classN}-btn`).classList.add("btn-active");
 };
+
+export const retriveSection = (nextSection, currentSection) => {
+  if (nextSection === "products-div") {
+    document.querySelector(`#${currentSection}`).classList.add("section-out");
+    document.querySelector(`#${currentSection}`).classList.remove("section-in");
+    return "Products";
+  }
+  if (nextSection === "cart-div") {
+    return "Cart";
+  }
+  if (nextSection === "about-div") {
+    return "About";
+  }
+};

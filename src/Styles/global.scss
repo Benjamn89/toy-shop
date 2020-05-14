@@ -31,3 +31,8 @@ $secondaryColor: #f86d70;
   display: flex;
   flex-direction: $flexDirec;
 }
+
+@mixin heightWidth($height, $width) {
+  height: $height;
+  width: $width;
+}
