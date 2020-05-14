@@ -28,9 +28,8 @@ class Navbar extends Component {
   };
 
   moveToSection = (e) => {
-    if (e.target.className === "products-div") {
-      productsBtn();
-    }
+    const classN = e.target.className;
+    productsBtn(classN);
   };
 
   render() {
@@ -38,23 +37,26 @@ class Navbar extends Component {
 
     return (
       <div className="navbar-div">
-        <div className="cart-div">
-          <button className="crat-btn">Cart</button>
+        <div className="cart-div" onClick={this.moveToSection}>
+          <button className="cart-div-btn">Cart</button>
           <div className="cart-logo"></div>
           <div className="cart-logo1"></div>
           <div className="cart-logo1-black"></div>
           <div className="cart-logo2"></div>
           <div className="cart-wheel1"></div>
           <div className="cart-wheel2"></div>
+          <div className="cart-circle-div">
+            <span>1</span>
+          </div>
         </div>
         <div className="products-div" onClick={this.moveToSection}>
-          <button className="products-btn">Products</button>
+          <button className="products-div-btn">Products</button>
         </div>
-        <div className="about-div">
-          <button className="about-btn">About</button>
+        <div className="about-div" onClick={this.moveToSection}>
+          <button className="about-div-btn">About</button>
         </div>
         <div className="logout-div" onClick={this.logOut}>
-          <button className="logout-btn">LogOut</button>
+          <button className="logout-div-btn">LogOut</button>
         </div>
       </div>
     );

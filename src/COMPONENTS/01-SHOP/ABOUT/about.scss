@@ -1,0 +1,115 @@
+@import "../../../Styles/global.scss";
+
+#about {
+  @include displayFlex(column);
+  padding: 50px;
+}
+.about-section-div {
+  @include displayFlex(row);
+  justify-content: center;
+  margin-bottom: 150px;
+}
+.about-inside-first,
+.about-inside-second {
+  @include displayFlex(column);
+  width: 40%;
+  height: 50vh;
+  align-items: center;
+}
+.about-inside-first {
+  justify-content: center;
+}
+.about-inside-second {
+  justify-content: space-evenly;
+}
+.toy-logo-img {
+  height: 90%;
+  width: 90%;
+}
+.about-second-h1 {
+  font-weight: 500;
+}
+.about-second-p span {
+  font-size: 50px;
+  font-weight: lighter;
+}
+.about2-fist-p {
+  line-height: 1.5;
+}
+
+// ################################################################################
+
+.about-section-div2 {
+  @include displayFlex(row);
+  justify-content: center;
+}
+.about-inside2-first,
+.about-inside2-second {
+  height: 50vh;
+  width: 40%;
+  display: flex;
+}
+.about-inside2-second {
+  align-items: center;
+  justify-content: center;
+}
+.about-inside2-first {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding: 50px;
+}
+.about2-first-h1 {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.about2-first-h2 {
+  margin-top: 150px;
+  align-self: center;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+.about2-first-btn {
+  align-self: center;
+  border: solid 0.5px;
+  padding: 10px 20px;
+  background: $secondaryColor;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.about2-first-btn:hover {
+  transform: translateY(-5px);
+}
+.toy-logo-img2 {
+  height: 90%;
+  width: 90%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .about-inside-second {
+    width: 80%;
+    text-align: center;
+  }
+  .about-section-div {
+    margin-bottom: 0;
+  }
+  .about-inside-first {
+    display: none;
+  }
+  .about-section-div2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-inside2-first,
+  .about-inside2-second {
+    width: 80%;
+    padding: 0;
+  }
+  .about-inside2-first {
+    order: 2;
+  }
+}

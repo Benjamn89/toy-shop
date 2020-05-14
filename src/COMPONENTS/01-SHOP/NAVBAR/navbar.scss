@@ -11,7 +11,7 @@
   grid-gap: 20px;
 
   > div {
-    border: solid 0.5px white;
+    border: solid 2px white;
     text-align: center;
     padding: 10px;
     position: relative;
@@ -38,16 +38,16 @@
 
   div::after {
     content: "";
-    @include absolute(0, 0, #fff, 100%, 100%);
+    @include absolute(0, 0, $primaryColor, 100%, 100%);
     clip-path: circle(10% at 0 100%);
     transform-origin: 0 100%;
     transition: 0.5s;
-    z-index: 5;
   }
 
   div:hover::after {
     clip-path: circle(100%);
     transform: translateX(0);
+    background: #fff;
   }
 
   div:hover {
@@ -60,14 +60,14 @@
 }
 .nav-active-div {
   background-color: #fff;
+  pointer-events: none;
 }
 .navbar-div * {
   transition: 0.3s;
 }
 
-.cart-div:hover > div {
-  transform: translateX(-60px);
-  background: #ffda79;
+.cart-div > div {
+  transform: translateX(-90px);
   pointer-events: none;
 }
 .cart-div:hover > .cart-logo1-black {
@@ -96,4 +96,13 @@
 }
 .cart-wheel2 {
   left: 31px;
+}
+.cart-circle-div {
+  @include absolute(-15px, 45px, $primaryColor, 30px, 30px);
+  border: solid 2px #fff;
+  border-radius: 50%;
+  span {
+    color: #ff9f43;
+    font-weight: bold;
+  }
 }

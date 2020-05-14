@@ -1,4 +1,5 @@
 $primaryColor: #706fd3;
+$secondaryColor: #f86d70;
 @mixin absolute($top, $left, $background, $width, $height) {
   position: absolute;
   top: $top;
@@ -16,7 +17,17 @@ $primaryColor: #706fd3;
   width: $width;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
+  -webkit-box-shadow: 0 5px 10px $primaryColor;
   box-shadow: 0 5px 10px $primaryColor;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
+}
+
+@mixin displayFlex($flexDirec) {
+  display: flex;
+  flex-direction: $flexDirec;
 }
