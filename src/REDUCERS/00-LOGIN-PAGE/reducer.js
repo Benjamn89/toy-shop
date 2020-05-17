@@ -6,6 +6,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   if (action.type === "loginSucess") {
     return {
+      ...state,
+      view: "About",
       login: !state.login,
     };
   }

@@ -4,15 +4,30 @@ import "./about.scss";
 import ToyLogo from "../../../media/toy-logo.svg";
 import ToyLogo2 from "../../../media/toy-logo2.svg";
 // Import Functions
-import { scrollPosition, sectionIn } from "./functions";
+import { scrollPosition, sectionIn, scrollToBottom } from "./functions";
+import { retriveSection, productsBtn } from "../NAVBAR/functions";
+// Import all about redux
+import { connect } from "react-redux";
+import actionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
 
 class About extends Component {
   componentDidMount() {
     sectionIn();
     scrollPosition();
+    scrollToBottom();
   }
 
+  moveToShop = () => {
+    // Some css effect
+    retriveSection("Products", "About");
+    productsBtn("products-div");
+    setTimeout(() => {
+      this.props.moveToShop();
+    }, 300);
+  };
+
   render() {
+    console.log("About -> RENDER!!!");
     const localS =
       typeof window !== "undefined" && JSON.parse(localStorage.getItem("shop"));
     const username = localS.user;
@@ -44,7 +59,9 @@ class About extends Component {
               immediately!
             </p>
             <h1 className="about2-first-h2">Sound Intersting?</h1>
-            <p className="about2-first-btn">Get Started!</p>
+            <p className="about2-first-btn" onClick={this.moveToShop}>
+              Get Started!
+            </p>
           </div>
           <div className="about-inside2-second">
             <img src={ToyLogo2} alt="TOY-LOGO" className="toy-logo-img2" />
@@ -55,4 +72,10 @@ class About extends Component {
   }
 }
 
-export default About;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    moveToShop: () => dispatch(actionTypes.changeView("Products")),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(About);

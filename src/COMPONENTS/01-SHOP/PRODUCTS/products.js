@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import "./products.scss";
+
+// Import Components
+import ProductsBox from "./products-box";
+
 class Products extends Component {
+  componentDidMount() {
+    // Should be removed when I start building this section
+    document.querySelector("#Products").classList.add("section-in");
+    window.scrollTo(0, 0);
+    console.log("CDM CALLING");
+  }
+
   render() {
     console.log("Products -> REDNER!!!");
-    return <div className="products-section-div"></div>;
+    return (
+      <section id="Products">
+        <div className="prod-background-circle-1"></div>
+        <div className="prod-background-circle-2"></div>
+        <ProductsBox />
+      </section>
+    );
   }
 }
 export default Products;

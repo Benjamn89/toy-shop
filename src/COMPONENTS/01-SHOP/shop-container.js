@@ -13,7 +13,7 @@ class LogedIn extends Component {
       currectView = <Products />;
     }
 
-    console.log("UserLogedContainer -> REDNER!!!");
+    console.log("ShopContainer -> REDNER!!!");
     return (
       <div className="loged-in-div">
         <Navbar />

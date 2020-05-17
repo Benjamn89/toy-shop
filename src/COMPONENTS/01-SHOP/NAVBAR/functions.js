@@ -13,9 +13,9 @@ export const productsBtn = (classN) => {
 };
 
 export const retriveSection = (nextSection, currentSection) => {
+  document.querySelector(`#${currentSection}`).classList.add("section-out");
+  document.querySelector(`#${currentSection}`).classList.remove("section-in");
   if (nextSection === "products-div") {
-    document.querySelector(`#${currentSection}`).classList.add("section-out");
-    document.querySelector(`#${currentSection}`).classList.remove("section-in");
     return "Products";
   }
   if (nextSection === "cart-div") {

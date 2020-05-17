@@ -1,17 +1,18 @@
 @import "../../../Styles/global.scss";
+@import "../../../Styles/animation.scss";
 
 #About {
   @include displayFlex(column);
   padding: 50px;
   transition: 0.3s;
-  opacity: 0;
 }
 .section-in {
-  opacity: 1 !important;
+  animation: 0.3s sectionIn forwards;
 }
 .section-out {
-  opacity: 0 !important;
+  animation: 0.3s sectionOut forwards;
 }
+
 .about-section-div {
   @include displayFlex(row);
   justify-content: center;

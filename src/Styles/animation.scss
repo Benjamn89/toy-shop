@@ -18,3 +18,57 @@
     transform: scaleX(0);
   }
 }
+
+@keyframes sectionIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sectionOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes productsIn {
+  from {
+    transform: translateX(1920px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes productsInRight {
+  from {
+    transform: translateX(-1920px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes productsOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-1920px);
+  }
+}
+
+@keyframes productsOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1920px);
+  }
+}
