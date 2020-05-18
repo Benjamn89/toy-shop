@@ -9,6 +9,7 @@ import {
   removeActiceSpan,
   itemBoxOut,
   itemBoxIn,
+  searchToy,
 } from "./functions";
 
 class ProductsBox extends Component {
@@ -35,7 +36,21 @@ class ProductsBox extends Component {
 
   changePage = (e) => {
     e.persist();
-    var nextPage = parseInt(e.target.innerHTML);
+    var nextPage;
+    if (e.target.innerHTML === "&lt;") {
+      nextPage = this.state.pages - 1;
+    } else if (e.target.innerHTML === "&gt;") {
+      nextPage = this.state.pages + 1;
+    } else {
+      nextPage = parseInt(e.target.innerHTML);
+    }
+    // Examine if the page bigger than tha acatual pages or less then
+    if (nextPage > 3) {
+      nextPage = 1;
+    }
+    if (nextPage < 1) {
+      nextPage = 3;
+    }
     var side = null;
     if (nextPage < this.state.pages) {
       side = "right";
@@ -49,10 +64,30 @@ class ProductsBox extends Component {
     }, 300);
   };
 
+  searchToy = (e) => {
+    const res = searchToy(e.target.value);
+    if (res && res.length > 0) {
+      this.setState({
+        pages: res,
+      });
+    }
+  };
+
   render() {
     console.log("ProductsBox -> REDNER!!!");
     return (
       <div className="products-box-div">
+        <div className="products-search-div">
+          <input
+            type="text"
+            placeholder="Search a toy..."
+            onChange={this.searchToy}
+          />
+          <div className="search-circle-div">
+            <div className="search-circle-line"></div>
+            <div className="search-line-div"></div>
+          </div>
+        </div>
         <div className="wrap-products-items-div">
           {retriveProducts(this.state.pages).map((el) => {
             return (
@@ -69,7 +104,9 @@ class ProductsBox extends Component {
         </div>
 
         <div className="products-pages-div">
-          <span className="products-start-span">{"<"}</span>
+          <span onClick={this.changePage} className="products-start-span">
+            {"<"}
+          </span>
           {pages().map((el) => {
             return (
               <span
@@ -81,7 +118,7 @@ class ProductsBox extends Component {
               </span>
             );
           })}
-          <span>{">"}</span>
+          <span onClick={this.changePage}>{">"}</span>
         </div>
       </div>
     );

@@ -50,14 +50,15 @@ export const pages = () => {
 };
 
 export const activeSpan = (state, side = null) => {
+  const wrapEl = document.querySelector(".wrap-products-items-div");
+  const inRight = document.querySelector(".wrap-products-in-right");
   if (side === "right") {
-    document
-      .querySelector(".wrap-products-items-div")
-      .classList.add("wrap-products-in-right");
+    wrapEl.classList.add("wrap-products-in-right");
   } else {
-    document
-      .querySelector(".wrap-products-items-div")
-      .classList.add("wrap-procuts-in-left");
+    if (inRight) {
+      inRight.classList.remove("wrap-products-in-right");
+    }
+    wrapEl.classList.add("wrap-procuts-in-left");
   }
   document
     .querySelectorAll(".products-span-for-active")
@@ -65,9 +66,12 @@ export const activeSpan = (state, side = null) => {
 };
 
 export const removeActiceSpan = () => {
-  document
-    .querySelector(".products-span-active")
-    .classList.remove("products-span-active");
+  const el = document.querySelector(".products-span-active");
+  if (el) {
+    document
+      .querySelector(".products-span-active")
+      .classList.remove("products-span-active");
+  }
 };
 
 export const retriveProducts = (state) => {
@@ -82,14 +86,11 @@ export const retriveProducts = (state) => {
 };
 
 export const itemBoxOut = (side = null) => {
+  const wrapEl = document.querySelector(".wrap-products-items-div");
   if (side === "right") {
-    document
-      .querySelector(".wrap-products-items-div")
-      .classList.add("wrap-products-out-right");
+    wrapEl.classList.add("wrap-products-out-right");
   } else {
-    document
-      .querySelector(".wrap-products-items-div")
-      .classList.add("wrap-products-out-left");
+    wrapEl.classList.add("wrap-products-out-left");
   }
 };
 
@@ -102,5 +103,19 @@ export const itemBoxIn = (side = null) => {
     document
       .querySelector(".wrap-products-out-left")
       .classList.remove("wrap-products-out-left");
+  }
+};
+
+export const searchToy = (val) => {
+  let arr = [];
+  if (val.length > 1) {
+    const valLower = val.toLowerCase();
+    toys.map((el) => {
+      if (el.title.toLowerCase().indexOf(valLower) > -1) {
+        arr.push(el);
+      }
+      return null;
+    });
+    return arr;
   }
 };

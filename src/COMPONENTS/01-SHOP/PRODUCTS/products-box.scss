@@ -1,5 +1,9 @@
 @import "../../../Styles/animation.scss";
 
+.products-box-div * {
+  transition: 0.3s;
+}
+
 .products-box-div {
   display: flex;
   flex-direction: column;
@@ -7,11 +11,14 @@
   justify-content: center;
   padding: 200px 100px;
   height: inherit;
+  position: relative;
 }
 
 .wrap-products-items-div {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   transition: 0.3s;
 }
 .wrap-procuts-in-left {
@@ -76,7 +83,7 @@
 
 .products-pages-div {
   position: absolute;
-  bottom: 150px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   span {
@@ -98,4 +105,63 @@
 .products-span-active {
   background: lightsteelblue;
   pointer-events: none;
+}
+
+.products-search-div {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  input {
+    height: 45px;
+    width: 300px;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    border: solid 0.5px #cad3c8;
+    border-radius: 2px;
+    color: #706fd3;
+  }
+  input:focus {
+    border: solid 1px #f86d70;
+  }
+}
+.search-circle-div {
+  width: 50px;
+  position: relative;
+  transform: translateX(-50px);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-circle-div:hover {
+  background: #f86d70;
+}
+.search-circle-div:hover .search-circle-line {
+  background-color: #f86d70;
+  border-color: #fff;
+}
+.search-circle-div:hover .search-line-div {
+  background: #fff;
+}
+.search-circle-line {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f86d70;
+  border-radius: 50%;
+}
+.search-line-div {
+  height: 8px;
+  width: 2px;
+  background: #f86d70;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
 }
