@@ -11,11 +11,13 @@ import thunk from "redux-thunk";
 // Import Reucers
 import logOnReducer from "./REDUCERS/00-LOGIN-PAGE/reducer";
 import CartReducer from "./REDUCERS/01-CART/reducer";
+import ProductsBox from "./REDUCERS/02-PRODUCTS-BOX/reducer";
 
 // combined reducers
 const rootReducer = combineReducers({
   logOnReducer,
   CartReducer,
+  ProductsBox,
 });
 
 // create logger for thunk

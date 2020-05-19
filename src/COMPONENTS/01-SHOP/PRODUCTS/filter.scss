@@ -1,0 +1,77 @@
+@mixin filterAbsolute($height, $width, $top, $left, $right, $position) {
+  position: $position;
+  height: $height;
+  width: $width;
+  top: $top;
+  left: $left;
+  right: $right;
+  background: #706fd3;
+}
+
+.filter-div {
+  @include filterAbsolute(20vh, 200px, 5%, none, 0, absolute);
+  border: solid 2px #706fd3;
+  border-right: none;
+  transition: 0.5s;
+  transform: translateX(100%);
+  background: none;
+  box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
+}
+.filter-div-click {
+  transform: translateX(0);
+}
+.filter-arrow-wrap {
+  @include filterAbsolute(50px, 50px, 0, none, 60px, relative);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.7s;
+  background: none;
+  cursor: pointer;
+}
+.filter-arrow-wrap:hover {
+  background: #f86d70;
+}
+.filter-arrow-wrap-close {
+  transform: rotate(180deg);
+}
+.filter-arrow-wrap:hover > div {
+  background: #fff;
+}
+.inside-arrow-straight {
+  @include filterAbsolute(4px, 40%, 47%, 32%, none, absolute);
+}
+.inside-arrow-top-wing {
+  @include filterAbsolute(4px, 27%, 41%, 28%, none, absolute);
+  transform: rotate(-35deg);
+}
+.inside-arrow-bottom-wing {
+  @include filterAbsolute(4px, 27%, 52%, 28%, none, absolute);
+  transform: rotate(35deg);
+}
+.filter-inside-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.input-filter-divs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.input-inside-label {
+  width: 50%;
+}
+.input-filter-input {
+  width: 17px;
+  height: 17px;
+}

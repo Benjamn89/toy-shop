@@ -10,34 +10,79 @@ import Thor from "../../../media/thor.jpg";
 import Turtle from "../../../media/turtle.jpg";
 import Woody from "../../../media/woody.jpg";
 
-function Toy(img, title, desc, price) {
+function Toy(img, title, desc, price, relation) {
   this.title = title;
   this.img = img;
   this.desc = desc;
   this.price = price;
+  this.relation = relation;
 }
 
 export const toys = [
-  new Toy(Buz, "Buz(Toy Story)", "Product details will be displayed here", 6),
+  new Toy(
+    Buz,
+    "Buz(Toy Story)",
+    "Product details will be displayed here",
+    6,
+    "toy story"
+  ),
   new Toy(
     CaptainA,
     "Captain America",
     "Product details will be displayed here",
-    10
+    10,
+    "marvel"
   ),
-  new Toy(Hulk, "Hulk", "Product details will be displayed here", 5),
-  new Toy(Ironman, "Ironman", "Product details will be displayed here", 10),
-  new Toy(Spiderman, "Spiderman", "Product details will be displayed here", 4),
-  new Toy(Batman, "Batman", "Product details will be displayed here", 4),
-  new Toy(Superman, "Superman", "Product details will be displayed here", 4),
-  new Toy(Thanos, "Thanos", "Product details will be displayed here", 10),
-  new Toy(Thor, "Thor", "Product details will be displayed here", 7),
-  new Toy(Turtle, "Turtle", "Product details will be displayed here", 5),
+  new Toy(Hulk, "Hulk", "Product details will be displayed here", 5, "marvel"),
+  new Toy(
+    Ironman,
+    "Ironman",
+    "Product details will be displayed here",
+    10,
+    "marvel"
+  ),
+  new Toy(
+    Spiderman,
+    "Spiderman",
+    "Product details will be displayed here",
+    4,
+    "none"
+  ),
+  new Toy(
+    Batman,
+    "Batman",
+    "Product details will be displayed here",
+    4,
+    "none"
+  ),
+  new Toy(
+    Superman,
+    "Superman",
+    "Product details will be displayed here",
+    4,
+    "none"
+  ),
+  new Toy(
+    Thanos,
+    "Thanos",
+    "Product details will be displayed here",
+    10,
+    "marvel"
+  ),
+  new Toy(Thor, "Thor", "Product details will be displayed here", 7, "marvel"),
+  new Toy(
+    Turtle,
+    "Turtle",
+    "Product details will be displayed here",
+    5,
+    "none"
+  ),
   new Toy(
     Woody,
     "Woody(Toy Story",
     "Product details will be displayed here",
-    5
+    5,
+    "toy story"
   ),
 ];
 
@@ -50,19 +95,23 @@ export const pages = () => {
 };
 
 export const activeSpan = (state, side = null) => {
-  const wrapEl = document.querySelector(".wrap-products-items-div");
-  const inRight = document.querySelector(".wrap-products-in-right");
-  if (side === "right") {
-    wrapEl.classList.add("wrap-products-in-right");
-  } else {
-    if (inRight) {
-      inRight.classList.remove("wrap-products-in-right");
+  try {
+    const wrapEl = document.querySelector(".wrap-products-items-div");
+    const inRight = document.querySelector(".wrap-products-in-right");
+    if (side === "right") {
+      wrapEl.classList.add("wrap-products-in-right");
+    } else {
+      if (inRight) {
+        inRight.classList.remove("wrap-products-in-right");
+      }
+      wrapEl.classList.add("wrap-procuts-in-left");
     }
-    wrapEl.classList.add("wrap-procuts-in-left");
+    document
+      .querySelectorAll(".products-span-for-active")
+      [state].classList.add("products-span-active");
+  } catch {
+    console.log("err activeSpan");
   }
-  document
-    .querySelectorAll(".products-span-for-active")
-    [state].classList.add("products-span-active");
 };
 
 export const removeActiceSpan = () => {

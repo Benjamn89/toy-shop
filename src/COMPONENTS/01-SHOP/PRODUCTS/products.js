@@ -3,6 +3,7 @@ import "./products.scss";
 
 // Import Components
 import ProductsBox from "./products-box";
+import Filter from "./filter";
 
 class Products extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class Products extends Component {
         <div className="prod-background-circle-1"></div>
         <div className="prod-background-circle-2"></div>
         <ProductsBox />
+        <Filter />
       </section>
     );
   }
