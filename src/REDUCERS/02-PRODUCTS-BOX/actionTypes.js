@@ -11,6 +11,11 @@ const actionTypes = {
       val: obj,
     };
   },
+  toggleFilter: () => {
+    return {
+      type: "toggleFilter",
+    };
+  },
 };
 
 export default actionTypes;

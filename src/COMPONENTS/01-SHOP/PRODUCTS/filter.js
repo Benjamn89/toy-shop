@@ -1,20 +1,48 @@
 import React, { Component } from "react";
 import "./filter.scss";
-
+// Import redux
+import { connect } from "react-redux";
 // Import functions
-import { showFilterBox, inputLabels } from "./filter-functions";
+import { showFilterBox, inputLabels, filtersObj } from "./filter-functions";
+import actionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
 
 class Filter extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   showFilter = () => {
     showFilterBox();
   };
 
+  toggleFilter = (e) => {
+    const eTarget = parseInt(e.target.getAttribute("index"));
+    if (eTarget === 0) {
+      filtersObj.marvel = !filtersObj.marvel;
+    }
+    if (eTarget === 1) {
+      filtersObj.toyStory = !filtersObj.toyStory;
+    }
+    if (eTarget === 2) {
+      filtersObj.max6 = !filtersObj.max6;
+    }
+    if (eTarget === 3) {
+      filtersObj.min6 = !filtersObj.min6;
+    }
+    this.props.toggleFilter();
+  };
+
   render() {
-    const inputs = inputLabels.map((el) => {
+    const inputs = inputLabels.map((el, ind) => {
       return (
         <div className="input-filter-divs" key={el}>
           <p className="input-inside-label">{el}</p>
-          <input type="checkBox" className="input-filter-input" />
+          <input
+            type="checkBox"
+            className="input-filter-input"
+            onChange={this.toggleFilter}
+            index={ind}
+          />
         </div>
       );
     });
@@ -37,4 +65,16 @@ class Filter extends Component {
   }
 }
 
-export default Filter;
+const mapStateToProps = (state) => {
+  return {
+    productsState: state.ProductsBox,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleFilter: () => dispatch(actionTypes.toggleFilter()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

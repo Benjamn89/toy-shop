@@ -10,6 +10,8 @@ import Thor from "../../../media/thor.jpg";
 import Turtle from "../../../media/turtle.jpg";
 import Woody from "../../../media/woody.jpg";
 
+import { filtersObj } from "./filter-functions";
+
 function Toy(img, title, desc, price, relation) {
   this.title = title;
   this.img = img;
@@ -86,9 +88,9 @@ export const toys = [
   ),
 ];
 
-export const pages = () => {
+export const pages = (products = toys.length) => {
   var arr = [];
-  for (var i = 1; i <= Math.round(toys.length / 4); i++) {
+  for (var i = 1; i <= Math.round(products / 4); i++) {
     arr.push(i);
   }
   return arr;
@@ -124,12 +126,50 @@ export const removeActiceSpan = () => {
 };
 
 export const retriveProducts = (state) => {
+  var copyToys = JSON.parse(JSON.stringify(toys));
+  var endArr = JSON.parse(JSON.stringify(toys));
   var arr = [];
+  if (filtersObj.marvel) {
+    if (endArr.length === copyToys.length) {
+      endArr = endArr.filter((el) => {
+        return el.relation === "marvel";
+      });
+    } else {
+      endArr.push(
+        ...copyToys.filter((el) => {
+          return el.relation === "marvel";
+        })
+      );
+    }
+  }
+  if (filtersObj.toyStory) {
+    if (endArr.length === copyToys.length) {
+      endArr = endArr.filter((el) => {
+        return el.relation === "toy story";
+      });
+    } else {
+      endArr.push(
+        ...copyToys.filter((el) => {
+          return el.relation === "toy story";
+        })
+      );
+    }
+  }
+  if (filtersObj.max6) {
+    endArr = endArr.filter((el) => {
+      return el.price <= 6;
+    });
+  }
+  if (filtersObj.min6) {
+    endArr = endArr.filter((el) => {
+      return el.price >= 6;
+    });
+  }
   for (var i = (state - 1) * 4; i < state * 4; i++) {
-    if (i >= toys.length) {
+    if (i >= endArr.length) {
       return arr;
     }
-    arr.push(toys[i]);
+    arr.push(endArr[i]);
   }
   return arr;
 };

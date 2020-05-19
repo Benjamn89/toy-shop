@@ -1,6 +1,7 @@
 const initialState = {
   pages: 1,
   products: [],
+  filter: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +12,16 @@ const reducer = (state = initialState, action) => {
     };
   }
   if (action.type === "productsSearch") {
-    return action.val;
+    return {
+      ...state,
+      ...action.val,
+    };
+  }
+  if (action.type === "toggleFilter") {
+    return {
+      ...state,
+      filter: !state.filter,
+    };
   }
   return state;
 };
