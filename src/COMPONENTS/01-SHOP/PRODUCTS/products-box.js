@@ -115,7 +115,7 @@ class ProductsBox extends Component {
           <span onClick={this.changePage} className="products-start-span">
             {"<"}
           </span>
-          {pages().map((el) => {
+          {pages(this.props.productsState.productsLength).map((el) => {
             return (
               <span
                 onClick={this.changePage}

@@ -2,6 +2,7 @@ const initialState = {
   pages: 1,
   products: [],
   filter: false,
+  productsLength: 11,
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,6 +22,7 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       filter: !state.filter,
+      productsLength: action.val,
     };
   }
   return state;

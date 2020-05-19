@@ -11,9 +11,10 @@ const actionTypes = {
       val: obj,
     };
   },
-  toggleFilter: () => {
+  toggleFilter: (products) => {
     return {
       type: "toggleFilter",
+      val: products,
     };
   },
 };

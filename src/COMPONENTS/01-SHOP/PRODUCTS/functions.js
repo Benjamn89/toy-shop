@@ -90,7 +90,7 @@ export const toys = [
 
 export const pages = (products = toys.length) => {
   var arr = [];
-  for (var i = 1; i <= Math.round(products / 4); i++) {
+  for (var i = 1; i <= Math.ceil(products / 4); i++) {
     arr.push(i);
   }
   return arr;
@@ -125,10 +125,10 @@ export const removeActiceSpan = () => {
   }
 };
 
-export const retriveProducts = (state) => {
+export const pureRetriveProducts = () => {
   var copyToys = JSON.parse(JSON.stringify(toys));
   var endArr = JSON.parse(JSON.stringify(toys));
-  var arr = [];
+
   if (filtersObj.marvel) {
     if (endArr.length === copyToys.length) {
       endArr = endArr.filter((el) => {
@@ -165,11 +165,18 @@ export const retriveProducts = (state) => {
       return el.price >= 6;
     });
   }
+
+  return endArr;
+};
+
+export const retriveProducts = (state) => {
+  var resArr = pureRetriveProducts();
+  var arr = [];
   for (var i = (state - 1) * 4; i < state * 4; i++) {
-    if (i >= endArr.length) {
+    if (i >= resArr.length) {
       return arr;
     }
-    arr.push(endArr[i]);
+    arr.push(resArr[i]);
   }
   return arr;
 };

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 // Import functions
 import { showFilterBox, inputLabels, filtersObj } from "./filter-functions";
 import actionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
+import { pureRetriveProducts } from "./functions";
 
 class Filter extends Component {
   shouldComponentUpdate() {
@@ -29,7 +30,8 @@ class Filter extends Component {
     if (eTarget === 3) {
       filtersObj.min6 = !filtersObj.min6;
     }
-    this.props.toggleFilter();
+    var products = pureRetriveProducts().length;
+    this.props.toggleFilter(products);
   };
 
   render() {
@@ -73,7 +75,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleFilter: () => dispatch(actionTypes.toggleFilter()),
+    toggleFilter: (products) => dispatch(actionTypes.toggleFilter(products)),
   };
 };
 
