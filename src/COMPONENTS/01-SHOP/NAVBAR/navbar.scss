@@ -108,3 +108,10 @@
     font-weight: bold;
   }
 }
+
+@media only screen and (max-width: 725px) {
+  .navbar-div div {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}

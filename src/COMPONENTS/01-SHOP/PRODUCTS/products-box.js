@@ -51,6 +51,7 @@ class ProductsBox extends Component {
     var obj = {
       pages: 1,
       products: [],
+      productsLength: 11,
     };
     if (res && res.length > 0) {
       if (res.length === this.props.productsState.products.length) {
@@ -59,6 +60,7 @@ class ProductsBox extends Component {
       obj = {
         products: res,
         pages: 0,
+        productsLength: res.length,
       };
     }
     if (obj.products.length === this.props.productsState.products.length) {
@@ -92,7 +94,7 @@ class ProductsBox extends Component {
     });
 
     var showPages = null;
-    if (this.props.productsState.pages > 0) {
+    if (this.props.productsState.productsLength > 4) {
       showPages = (
         <div className="products-pages-div">
           <span onClick={this.changePage} className="products-start-span">

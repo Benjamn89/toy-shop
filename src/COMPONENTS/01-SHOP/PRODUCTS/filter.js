@@ -45,6 +45,7 @@ class Filter extends Component {
             onChange={this.toggleFilter}
             index={ind}
           />
+          <span className="span-over-input-filter"></span>
         </div>
       );
     });

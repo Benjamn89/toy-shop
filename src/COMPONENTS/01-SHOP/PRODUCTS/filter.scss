@@ -67,11 +67,84 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.inside-filter-title {
+  font-weight: 500;
 }
 .input-inside-label {
   width: 50%;
+  font-weight: 500;
 }
 .input-filter-input {
   width: 17px;
   height: 17px;
+  opacity: 0;
+  cursor: pointer;
+}
+.span-over-input-filter {
+  position: absolute;
+  top: 0;
+  right: 39px;
+  height: 21px;
+  width: 21px;
+  background-color: #706fd3;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  z-index: -10;
+  box-shadow: 0 5px 5px hsla(241, 53%, 63%, 0.719);
+  transition: 0.3s ease-out;
+}
+.span-over-input-filter::after {
+  position: absolute;
+  content: "";
+  left: 12px;
+  top: 12px;
+  height: 0;
+  width: 0;
+  border-radius: 5px;
+  border: solid #706fd3;
+  transform: rotate(0deg) scale(0);
+  opacity: 1;
+  transition: 0.3s ease-out;
+}
+.span-over-input-filter::before {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  transform: scale(0);
+}
+input:checked ~ .span-over-input-filter {
+  background-color: #fff;
+  border-radius: 5px;
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+input:checked ~ .span-over-input-filter::after {
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 11px;
+  border: solid #706fd3;
+  border-width: 0 2px 2px 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+input:checked ~ .span-over-input-filter::before {
+  left: -3px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  transform: scale(3);
+  opacity: 0;
+  z-index: 999;
+  transition: 0.3s ease-out;
 }
