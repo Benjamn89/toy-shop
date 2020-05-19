@@ -3,16 +3,10 @@ import "./products-box.scss";
 // All about redux
 import { connect } from "react-redux";
 import actionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
-// Import fucntions
-import {
-  pages,
-  activeSpan,
-  retriveProducts,
-  removeActiceSpan,
-  itemBoxOut,
-  itemBoxIn,
-  searchToy,
-} from "./functions";
+// Import pure fucntions
+import { pages, retriveProducts, searchToy, changePage } from "./functions";
+// import dom manipulation functions
+import { activeSpan, removeActiceSpan, itemBoxOut, itemBoxIn } from "./box-bom";
 
 class ProductsBox extends Component {
   shouldComponentUpdate(nP, nS) {
@@ -37,29 +31,18 @@ class ProductsBox extends Component {
 
   changePage = (e) => {
     e.persist();
-    var nextPage;
-    if (e.target.innerHTML === "&lt;") {
-      nextPage = this.props.productsState.pages - 1;
-    } else if (e.target.innerHTML === "&gt;") {
-      nextPage = this.props.productsState.pages + 1;
-    } else {
-      nextPage = parseInt(e.target.innerHTML);
+    var res = changePage(
+      e.target.innerHTML,
+      this.props.productsState.pages,
+      this.props.productsState.productsLength
+    );
+    if (!res) {
+      return null;
     }
-    // Examine if the page bigger than tha acatual pages or less then
-    if (nextPage > 3) {
-      nextPage = 1;
-    }
-    if (nextPage < 1) {
-      nextPage = 3;
-    }
-    var side = null;
-    if (nextPage < this.props.productsState.pages) {
-      side = "right";
-    }
-    itemBoxOut(side);
+    itemBoxOut(res.side);
     setTimeout(() => {
-      itemBoxIn(side);
-      this.props.productsBoxChangePage(nextPage);
+      itemBoxIn(res.side);
+      this.props.productsBoxChangePage(res.nextPage);
     }, 300);
   };
 

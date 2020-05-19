@@ -23,6 +23,7 @@ const reducer = (state = initialState, action) => {
       ...state,
       filter: !state.filter,
       productsLength: action.val,
+      pages: 1,
     };
   }
   return state;

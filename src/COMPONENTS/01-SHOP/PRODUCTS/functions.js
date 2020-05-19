@@ -96,35 +96,6 @@ export const pages = (products = toys.length) => {
   return arr;
 };
 
-export const activeSpan = (state, side = null) => {
-  try {
-    const wrapEl = document.querySelector(".wrap-products-items-div");
-    const inRight = document.querySelector(".wrap-products-in-right");
-    if (side === "right") {
-      wrapEl.classList.add("wrap-products-in-right");
-    } else {
-      if (inRight) {
-        inRight.classList.remove("wrap-products-in-right");
-      }
-      wrapEl.classList.add("wrap-procuts-in-left");
-    }
-    document
-      .querySelectorAll(".products-span-for-active")
-      [state].classList.add("products-span-active");
-  } catch {
-    console.log("err activeSpan");
-  }
-};
-
-export const removeActiceSpan = () => {
-  const el = document.querySelector(".products-span-active");
-  if (el) {
-    document
-      .querySelector(".products-span-active")
-      .classList.remove("products-span-active");
-  }
-};
-
 export const pureRetriveProducts = () => {
   var copyToys = JSON.parse(JSON.stringify(toys));
   var endArr = JSON.parse(JSON.stringify(toys));
@@ -181,32 +152,12 @@ export const retriveProducts = (state) => {
   return arr;
 };
 
-export const itemBoxOut = (side = null) => {
-  const wrapEl = document.querySelector(".wrap-products-items-div");
-  if (side === "right") {
-    wrapEl.classList.add("wrap-products-out-right");
-  } else {
-    wrapEl.classList.add("wrap-products-out-left");
-  }
-};
-
-export const itemBoxIn = (side = null) => {
-  if (side === "right") {
-    document
-      .querySelector(".wrap-products-out-right")
-      .classList.remove("wrap-products-out-right");
-  } else {
-    document
-      .querySelector(".wrap-products-out-left")
-      .classList.remove("wrap-products-out-left");
-  }
-};
-
 export const searchToy = (val) => {
+  let resArr = pureRetriveProducts();
   let arr = [];
   if (val.length > 1) {
     const valLower = val.toLowerCase();
-    toys.map((el) => {
+    resArr.map((el) => {
       if (el.title.toLowerCase().indexOf(valLower) > -1) {
         arr.push(el);
       }
@@ -214,4 +165,33 @@ export const searchToy = (val) => {
     });
     return arr;
   }
+};
+
+export const changePage = (eTarget, pageState, productsState) => {
+  var nextPage;
+  if (eTarget === "&lt;") {
+    nextPage = pageState - 1;
+  } else if (eTarget === "&gt;") {
+    nextPage = pageState + 1;
+  } else {
+    nextPage = parseInt(eTarget);
+  }
+
+  if (nextPage > Math.ceil(productsState / 4)) {
+    nextPage = 1;
+  }
+  if (nextPage < 1) {
+    nextPage = Math.ceil(productsState / 4);
+  }
+  var side = null;
+  if (nextPage < pageState) {
+    side = "right";
+  }
+  if (nextPage === pageState) {
+    return null;
+  }
+  return {
+    nextPage,
+    side,
+  };
 };
