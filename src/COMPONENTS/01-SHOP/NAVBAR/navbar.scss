@@ -4,9 +4,15 @@
   height: 8vh;
   background: $primaryColor;
   width: 100%;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 120px 20px 120px 20px 120px 20px 120px;
   grid-template-columns: repeat(4, 120px);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   grid-gap: 20px;
   position: relative;
@@ -41,13 +47,18 @@
   div::after {
     content: "";
     @include absolute(0, 0, $primaryColor, 100%, 100%);
+    -webkit-clip-path: circle(10% at 0 100%);
     clip-path: circle(10% at 0 100%);
+    -webkit-transform-origin: 0 100%;
     transform-origin: 0 100%;
+    -webkit-transition: 0.5s;
     transition: 0.5s;
   }
 
   div:hover::after {
+    -webkit-clip-path: circle(100%);
     clip-path: circle(100%);
+    -webkit-transform: translateX(0);
     transform: translateX(0);
     background: #fff;
   }
@@ -65,10 +76,12 @@
   pointer-events: none;
 }
 .navbar-div * {
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 .cart-div > div {
+  -webkit-transform: translateX(-90px);
   transform: translateX(-90px);
   pointer-events: none;
 }
@@ -77,15 +90,19 @@
 }
 .cart-logo {
   @include absolute(13px, 20px, #fff, 20px, 12px);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  -webkit-transform: rotate(-5deg);
   transform: rotate(-5deg);
 }
 .cart-logo1 {
   @include absolute(11px, 15px, #fff, 6px, 19px);
+  -webkit-transform: rotate(-5deg);
   transform: rotate(-5deg);
 }
 .cart-logo1-black {
   @include absolute(13px, 6px, #706fd3, 13px, 18px);
+  -webkit-transform: rotate(-9deg);
   transform: rotate(-9deg);
 }
 .cart-logo2 {
@@ -112,6 +129,7 @@
 @media only screen and (max-width: 725px) {
   .navbar-div div {
     opacity: 0;
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
   }
 }

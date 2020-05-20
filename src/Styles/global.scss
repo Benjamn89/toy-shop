@@ -28,7 +28,12 @@ $secondaryColor: #f86d70;
 }
 
 @mixin displayFlex($flexDirec) {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $flexDirec;
   flex-direction: $flexDirec;
 }
 

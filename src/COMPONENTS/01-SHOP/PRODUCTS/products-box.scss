@@ -1,13 +1,22 @@
 @import "../../../Styles/animation.scss";
 
 .products-box-div * {
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 .products-box-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 200px 100px;
   height: inherit;
@@ -15,22 +24,35 @@
 }
 
 .wrap-products-items-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .wrap-procuts-in-left {
+  -webkit-animation: productsIn 0.7s;
   animation: productsIn 0.7s;
 }
 .wrap-products-in-right {
+  -webkit-animation: productsInRight 0.7s;
   animation: productsInRight 0.7s;
 }
 .wrap-products-out-left {
+  -webkit-animation: productsOut 0.7s;
   animation: productsOut 0.7s;
 }
 .wrap-products-out-right {
+  -webkit-animation: productsOutRight 0.7s;
   animation: productsOutRight 0.7s;
 }
 
@@ -39,16 +61,25 @@
   width: 300px;
   border: solid 0.5px #cad3c8;
   margin: 0 15px 15px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   position: relative;
   cursor: pointer;
   img {
     height: 33%;
     width: 70%;
+    -o-object-fit: contain;
     object-fit: contain;
   }
   hr {
@@ -78,6 +109,7 @@
   margin-top: 10px;
 }
 .products-item-div:hover {
+  -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
 
@@ -85,6 +117,7 @@
   position: absolute;
   bottom: 50px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   span {
     font-size: 20px;
@@ -92,6 +125,7 @@
     border-right: solid 0.5px;
     border-bottom: solid 0.5px;
     padding: 10px;
+    -webkit-transition: 0.3s;
     transition: 0.3s;
     cursor: pointer;
   }
@@ -111,8 +145,14 @@
   position: fixed;
   top: 150px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   input {
     height: 45px;
@@ -132,10 +172,17 @@
 .search-circle-div {
   width: 50px;
   position: relative;
+  -webkit-transform: translateX(-50px);
   transform: translateX(-50px);
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .search-circle-div:hover {
@@ -160,6 +207,7 @@
   width: 2px;
   background: #f86d70;
   border-radius: 2px;
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   position: absolute;
   right: 15px;

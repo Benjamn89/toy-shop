@@ -4,17 +4,22 @@
 #About {
   @include displayFlex(column);
   padding: 50px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .section-in {
+  -webkit-animation: 0.3s sectionIn forwards;
   animation: 0.3s sectionIn forwards;
 }
 .section-out {
+  -webkit-animation: 0.3s sectionOut forwards;
   animation: 0.3s sectionOut forwards;
 }
 
 .about-section-div {
   @include displayFlex(row);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 150px;
 }
@@ -22,12 +27,18 @@
 .about-inside-second {
   @include displayFlex(column);
   @include heightWidth(50vh, 40%);
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .about-inside-first {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .about-inside-second {
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
 }
 .toy-logo-img {
@@ -57,25 +68,43 @@
 
 .about-section-div2 {
   @include displayFlex(row);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-transition: 0.7s;
   transition: 0.7s;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
 }
 .about-section-div2-active {
+  -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 .about-inside2-first,
 .about-inside2-second {
   @include heightWidth(50vh, 40%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .about-inside2-second {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .about-inside2-first {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
   align-items: baseline;
   padding: 50px;
 }
@@ -85,11 +114,15 @@
 }
 .about2-first-h2 {
   margin-top: 150px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   font-weight: 500;
   margin-bottom: 50px;
 }
 .about2-first-btn {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   border: solid 0.5px;
   padding: 10px 20px;
@@ -99,9 +132,11 @@
   border-radius: 4px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   cursor: pointer;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .about2-first-btn:hover {
+  -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 }
 .toy-logo-img2 {
@@ -120,7 +155,12 @@
     display: none;
   }
   .about-section-div2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
   .about-inside2-first,
@@ -129,6 +169,8 @@
     padding: 0;
   }
   .about-inside2-first {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
     order: 2;
   }
 }

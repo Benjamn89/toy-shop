@@ -3,10 +3,12 @@
 
 .login-page-div {
   height: 100vh;
+  -webkit-perspective: 800px;
   perspective: 800px;
   @include animatePropertyIn();
 }
 .login-page-div * {
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .login-page-div-forward {
@@ -15,10 +17,20 @@
 .login-nav-div {
   height: 6vh;
   border-bottom: solid 1px $primaryColor;
+  -webkit-box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
   box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   span {
     cursor: pointer;
@@ -29,10 +41,20 @@
   @include absolute(28%, 40%, #fff, 370px, 470px);
   border: solid 0.5px $primaryColor;
 
+  -webkit-backface-visibility: hidden;
+
   backface-visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
   box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
 }
 
@@ -40,6 +62,7 @@
   padding: 20px;
 }
 .actual-log-div {
+  -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 
   h1 {
@@ -63,6 +86,7 @@
       font-size: 20px;
       left: 30px;
       pointer-events: none;
+      -webkit-transition: 0.2s;
       transition: 0.2s;
     }
     .u-span {
@@ -81,6 +105,7 @@
     font-weight: bold;
     border: none;
     border-bottom: solid 2px lightgrey;
+    -webkit-transition: 0.3s;
     transition: 0.3s;
     position: relative;
     padding-left: 30px;
@@ -89,6 +114,7 @@
     border-bottom-color: #ea2027 !important;
   }
   .span-focus {
+    -webkit-transform: translateY(-15px);
     transform: translateY(-15px);
     font-size: 15px;
   }
@@ -112,15 +138,18 @@
     @include btnStyle(10px, 40px, 100px, 0);
   }
   .inside-login-p:hover {
+    -webkit-transform: scale(1.1);
     transform: scale(1.1);
     letter-spacing: 2px;
   }
 }
 
 .flip-reg {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 .flip-log {
+  -webkit-transform: rotateY(0);
   transform: rotateY(0);
 }
 
@@ -134,6 +163,7 @@
   @include btnStyle(10px, 40px, 100px, 150px);
 }
 .reg-log-btn:hover {
+  -webkit-transform: scale(1.1);
   transform: scale(1.1);
   letter-spacing: 2px;
 }
