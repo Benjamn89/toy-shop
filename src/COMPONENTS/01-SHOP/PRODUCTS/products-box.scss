@@ -56,6 +56,9 @@
   animation: productsOutRight 0.7s;
 }
 
+.products-item-div * {
+  pointer-events: none;
+}
 .products-item-div {
   height: 300px;
   width: 300px;

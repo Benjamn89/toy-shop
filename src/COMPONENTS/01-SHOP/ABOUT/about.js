@@ -20,7 +20,7 @@ class About extends Component {
   moveToShop = () => {
     // Some css effect
     retriveSection("Products", "About");
-    productsBtn("products-div");
+    productsBtn("products");
     setTimeout(() => {
       this.props.moveToShop();
     }, 300);

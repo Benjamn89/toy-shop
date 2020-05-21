@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-
 // Import All about redux
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";

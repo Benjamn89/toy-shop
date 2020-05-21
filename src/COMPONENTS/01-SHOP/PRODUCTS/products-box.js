@@ -1,12 +1,20 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./products-box.scss";
 // All about redux
 import { connect } from "react-redux";
 import actionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
 // Import pure fucntions
-import { pages, retriveProducts, searchToy, changePage } from "./functions";
+import {
+  pages,
+  retriveProducts,
+  searchToy,
+  changePage,
+  retriveIndex,
+} from "./functions";
 // import dom manipulation functions
-import { activeSpan, removeActiceSpan, itemBoxOut, itemBoxIn } from "./box-bom";
+import { activeSpan, removeActiceSpan, itemBoxOut, itemBoxIn } from "./box-dom";
+import { onlyRemoveDom } from "../NAVBAR/functions";
 
 class ProductsBox extends Component {
   shouldComponentUpdate(nP, nS) {
@@ -69,6 +77,16 @@ class ProductsBox extends Component {
     this.props.productsSearch(obj);
   };
 
+  showProduct = (e) => {
+    const itemTitle = e.target.getAttribute("id");
+    var res = retriveIndex(itemTitle);
+    onlyRemoveDom();
+    this.props.history.push({
+      pathname: `/product/${itemTitle}`,
+      state: res,
+    });
+  };
+
   render() {
     console.log("ProductsBox -> REDNER!!!");
     var retriveFrom;
@@ -82,7 +100,12 @@ class ProductsBox extends Component {
 
     const actualProducts = retriveFrom.map((el) => {
       return (
-        <div className="products-item-div" key={el.title}>
+        <div
+          className="products-item-div"
+          key={el.title}
+          onClick={this.showProduct}
+          id={el.title}
+        >
           <img src={el.img} alt={el.title} className="products-img" />
           <hr />
           <h1 className="products-title">{el.title}</h1>
@@ -151,4 +174,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsBox);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(ProductsBox));

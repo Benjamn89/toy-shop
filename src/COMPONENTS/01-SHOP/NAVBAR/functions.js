@@ -5,6 +5,36 @@ export const initialBtn = () => {
 };
 
 export const productsBtn = (classN) => {
+  try {
+    // first Remove
+    document
+      .querySelector(".nav-active-div")
+      .classList.remove("nav-active-div");
+    document.querySelector(".btn-active").classList.remove("btn-active");
+    document
+      .querySelector(".expand-p-active")
+      .classList.remove("expand-p-active");
+    if (document.querySelector(".expand-div-click-on")) {
+      document
+        .querySelector(".expand-div-click-on")
+        .classList.remove("expand-div-click-on");
+    }
+  } catch {
+    console.log("productsBtn rmv err");
+  }
+  try {
+    // Then add
+    document.querySelector(`.${classN}-div`).classList.add("nav-active-div");
+    document.querySelector(`.${classN}-div-btn`).classList.add("btn-active");
+    document
+      .querySelector(`.expand-p-${classN}`)
+      .classList.add("expand-p-active");
+  } catch {
+    console.log("productsBtm rmv err");
+  }
+};
+
+export const onlyRemoveDom = () => {
   // first Remove
   document.querySelector(".nav-active-div").classList.remove("nav-active-div");
   document.querySelector(".btn-active").classList.remove("btn-active");
@@ -16,17 +46,15 @@ export const productsBtn = (classN) => {
       .querySelector(".expand-div-click-on")
       .classList.remove("expand-div-click-on");
   }
-  // Then add
-  document.querySelector(`.${classN}-div`).classList.add("nav-active-div");
-  document.querySelector(`.${classN}-div-btn`).classList.add("btn-active");
-  document
-    .querySelector(`.expand-p-${classN}`)
-    .classList.add("expand-p-active");
 };
 
 export const retriveSection = (nextSection, currentSection) => {
-  document.querySelector(`#${currentSection}`).classList.add("section-out");
-  document.querySelector(`#${currentSection}`).classList.remove("section-in");
+  try {
+    document.querySelector(`#${currentSection}`).classList.add("section-out");
+    document.querySelector(`#${currentSection}`).classList.remove("section-in");
+  } catch {
+    console.log("retriveSection err");
+  }
   if (nextSection === "products") {
     return "Products";
   }

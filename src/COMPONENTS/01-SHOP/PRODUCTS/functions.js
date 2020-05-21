@@ -195,3 +195,10 @@ export const changePage = (eTarget, pageState, productsState) => {
     side,
   };
 };
+
+export const retriveIndex = (title) => {
+  var res = toys.find((el) => {
+    return el.title === title;
+  });
+  return res;
+};

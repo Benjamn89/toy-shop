@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./navbar.scss";
+import { withRouter } from "react-router-dom";
 
 // Import functions
 import {
@@ -40,12 +41,19 @@ class Navbar extends Component {
   moveToSection = (e) => {
     // Taking care to the style inside the nav
     const classN = e.target.getAttribute("keyname");
-    productsBtn(classN);
-    // Retrive the section name
-    const section = retriveSection(classN, this.props.logOn.view);
-    setTimeout(() => {
+    if (this.props.location.pathname.length > 1) {
+      const section = retriveSection(classN, this.props.logOn.view);
       this.props.changeView(section);
-    }, 300);
+      productsBtn(classN);
+      this.props.history.push("/");
+    } else {
+      productsBtn(classN);
+      // Retrive the section name
+      const section = retriveSection(classN, this.props.logOn.view);
+      setTimeout(() => {
+        this.props.changeView(section);
+      }, 300);
+    }
   };
 
   expandSqueeze = () => {
@@ -120,4 +128,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar));

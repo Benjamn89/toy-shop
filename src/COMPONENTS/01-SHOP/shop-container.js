@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 // Import Components
 import Navbar from "./NAVBAR/navbar";
 import Products from "./PRODUCTS/products";
 import About from "./ABOUT/about";
+import Product from "./PRODUCT/product";
 
 import "./shop-container.scss";
 class LogedIn extends Component {
@@ -17,7 +19,10 @@ class LogedIn extends Component {
     return (
       <div className="loged-in-div">
         <Navbar />
-        {currectView}
+        <Switch>
+          <Route exact path="/" render={() => currectView} />
+          <Route exact path="/product/:id" component={Product} />
+        </Switch>
       </div>
     );
   }

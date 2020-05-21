@@ -4,6 +4,7 @@ import LoginPage from "./COMPONENTS/00-LOGIN-PAGE/login";
 import LoggedIn from "./COMPONENTS/01-SHOP/shop-container";
 
 import { connect } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   shouldComponentUpdate(nP, nS) {
@@ -27,7 +28,11 @@ class App extends Component {
         logged = true;
       }
     }
-    return <div className="App">{logged ? <LoggedIn /> : <LoginPage />}</div>;
+    return (
+      <BrowserRouter>
+        <div className="App">{logged ? <LoggedIn /> : <LoginPage />}</div>
+      </BrowserRouter>
+    );
   }
 }
 
