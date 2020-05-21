@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import "./navbar.scss";
 
 // Import functions
-import { initialBtn, productsBtn, retriveSection } from "./functions";
+import {
+  initialBtn,
+  productsBtn,
+  retriveSection,
+  circleDomMani,
+  sectionArr,
+} from "./functions";
 
 // Import all for redux
 import { connect } from "react-redux";
@@ -33,7 +39,7 @@ class Navbar extends Component {
 
   moveToSection = (e) => {
     // Taking care to the style inside the nav
-    const classN = e.target.className;
+    const classN = e.target.getAttribute("keyname");
     productsBtn(classN);
     // Retrive the section name
     const section = retriveSection(classN, this.props.logOn.view);
@@ -42,31 +48,58 @@ class Navbar extends Component {
     }, 300);
   };
 
+  expandSqueeze = () => {
+    circleDomMani();
+  };
+
   render() {
     console.log("Navbar -> REDNER!!!");
 
     return (
       <div className="navbar-div">
-        <div className="cart-div" onClick={this.moveToSection}>
-          <button className="cart-div-btn">Cart</button>
-          <div className="cart-logo"></div>
-          <div className="cart-logo1"></div>
-          <div className="cart-logo1-black"></div>
-          <div className="cart-logo2"></div>
-          <div className="cart-wheel1"></div>
-          <div className="cart-wheel2"></div>
-          <div className="cart-circle-div">
-            <span>{this.props.cartItems.length}</span>
-          </div>
+        {sectionArr.map((el) => {
+          return (
+            <div
+              key={el.name}
+              className={el.regularClass}
+              onClick={el.methodName ? this.moveToSection : this.logOut}
+              keyname={el.name.toLowerCase()}
+            >
+              <button className={el.regularClass + "-btn"}>{el.name}</button>
+              {el.additionalEl ? (
+                <React.Fragment>
+                  <div className="cart-logo"></div>
+                  <div className="cart-logo1"></div>
+                  <div className="cart-logo1-black"></div>
+                  <div className="cart-logo2"></div>
+                  <div className="cart-wheel1"></div>
+                  <div className="cart-wheel2"></div>
+                  <div className="cart-circle-div">
+                    <span>{this.props.cartItems.length}</span>
+                  </div>
+                </React.Fragment>
+              ) : null}
+            </div>
+          );
+        })}
+        <div className="squeeze-circle-div" onClick={this.expandSqueeze}>
+          <div className="circle-line-div1"></div>
+          <div className="circle-line-div2"></div>
+          <div className="circle-line-div3"></div>
         </div>
-        <div className="products-div" onClick={this.moveToSection}>
-          <button className="products-div-btn">Products</button>
-        </div>
-        <div className="about-div" onClick={this.moveToSection}>
-          <button className="about-div-btn">About</button>
-        </div>
-        <div className="logout-div" onClick={this.logOut}>
-          <button className="logout-div-btn">LogOut</button>
+        <div className="expand-div-click">
+          {sectionArr.map((el) => {
+            return (
+              <p
+                className={el.squeezeClass}
+                key={el.name}
+                onClick={el.methodName ? this.moveToSection : this.logOut}
+                keyname={el.name.toLowerCase()}
+              >
+                {el.name}
+              </p>
+            );
+          })}
         </div>
       </div>
     );

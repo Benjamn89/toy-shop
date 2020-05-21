@@ -174,3 +174,9 @@
     order: 2;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .about2-first-btn {
+    margin-bottom: 60px;
+  }
+}

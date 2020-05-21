@@ -16,9 +16,13 @@
   align-items: center;
   grid-gap: 20px;
   position: relative;
+  transition: 0.3s;
   z-index: 10;
 
-  > div {
+  .cart-div,
+  .products-div,
+  .about-div,
+  .logout-div {
     border: solid 2px white;
     text-align: center;
     padding: 10px;
@@ -44,7 +48,10 @@
     }
   }
 
-  div::after {
+  .cart-div::after,
+  .products-div::after,
+  .about-div::after,
+  .logout-div::after {
     content: "";
     @include absolute(0, 0, $primaryColor, 100%, 100%);
     -webkit-clip-path: circle(10% at 0 100%);
@@ -63,13 +70,91 @@
     background: #fff;
   }
 
-  div:hover {
+  .cart-div,
+  .products-div,
+  .about-div,
+  .logout-div,
+  .squeeze-circle-div {
     cursor: pointer;
   }
   div:hover > button {
     color: black;
     letter-spacing: 5px;
   }
+}
+.squeeze-circle-div {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(150%);
+  pointer-events: none;
+  display: grid;
+  grid-template-rows: repeat(3);
+  align-content: center;
+  row-gap: 4px;
+  justify-content: center;
+  div {
+    height: 2px;
+    background: #fff;
+    justify-self: center;
+    transition: 0.3s linear;
+  }
+}
+.squeeze-circle-div:hover {
+  opacity: 1;
+}
+.circle-line-div1 {
+  width: 20px;
+}
+.circle-line-div2 {
+  width: 12px;
+}
+.circle-line-div3 {
+  width: 6px;
+}
+.circle-line-div1-flip {
+  width: 6px;
+}
+.circle-line-div3-flip {
+  width: 20px;
+}
+.expand-div-click {
+  padding-top: 10px;
+  position: absolute;
+  left: 0;
+  top: 8vh;
+  width: 100%;
+  height: 0;
+  background: $primaryColor;
+  z-index: -20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden;
+  p {
+    color: white;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    letter-spacing: 2px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  p:hover {
+    opacity: 1;
+  }
+  .expand-p-active {
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+.expand-div-click-on {
+  height: 160px;
 }
 .nav-active-div {
   background-color: #fff;
@@ -127,9 +212,18 @@
 }
 
 @media only screen and (max-width: 725px) {
-  .navbar-div div {
+  .cart-div,
+  .products-div,
+  .about-div,
+  .logout-div {
     opacity: 0;
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
+  }
+  .squeeze-circle-div {
+    opacity: 1;
+    transform: translateX(-50%);
+    pointer-events: fill;
+    opacity: 0.7;
   }
 }
