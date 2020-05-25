@@ -58,6 +58,18 @@ export const retriveSection = (nextSection, currentSection) => {
   try {
     document.querySelector(`#${currentSection}`).classList.add("section-out");
     document.querySelector(`#${currentSection}`).classList.remove("section-in");
+
+    if (document.querySelector(".expand-div-click-on")) {
+      document
+        .querySelector(".expand-div-click")
+        .classList.toggle("expand-div-click-on");
+      document
+        .querySelector(".circle-line-div1")
+        .classList.toggle("circle-line-div1-flip");
+      document
+        .querySelector(".circle-line-div3")
+        .classList.toggle("circle-line-div3-flip");
+    }
   } catch {
     console.log("retriveSection err");
   }

@@ -81,7 +81,7 @@ export const toys = [
   ),
   new Toy(
     Woody,
-    "Woody(Toy Story",
+    "Woody(Toy Story)",
     "Product details will be displayed here",
     5,
     "toy story"

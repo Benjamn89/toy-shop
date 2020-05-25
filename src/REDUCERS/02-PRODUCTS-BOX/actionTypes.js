@@ -17,6 +17,11 @@ const actionTypes = {
       val: products,
     };
   },
+  resetFromProduct: () => {
+    return {
+      type: "productsActionTypes",
+    };
+  },
 };
 
 export default actionTypes;

@@ -26,6 +26,10 @@ const reducer = (state = initialState, action) => {
       pages: 1,
     };
   }
+  if (action.type === "productsActionTypes") {
+    console.log("Should reset the products states");
+    return initialState;
+  }
   return state;
 };
 

@@ -6,6 +6,7 @@ import Navbar from "./NAVBAR/navbar";
 import Products from "./PRODUCTS/products";
 import About from "./ABOUT/about";
 import Product from "./PRODUCT/product";
+import Cart from "./CART/cart";
 
 import "./shop-container.scss";
 class LogedIn extends Component {
@@ -20,6 +21,9 @@ class LogedIn extends Component {
     let currectView = <About />;
     if (this.props.logOn.view === "Products") {
       currectView = <Products />;
+    }
+    if (this.props.logOn.view === "Cart") {
+      currectView = <Cart />;
     }
 
     console.log("ShopContainer -> REDNER!!!");

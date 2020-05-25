@@ -4,9 +4,13 @@ import { connect } from "react-redux";
 
 // Import media
 import CartLogo from "../../../media/cart-logo.png";
+// Import action types
 import actionTypes from "../../../REDUCERS/03-SINGLE PRODUCT/actionTypes";
+import cartActionTypes from "../../../REDUCERS/01-CART/actionTypes";
+import productsActionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
 // Import functions
 import { productSectionOut } from "../NAVBAR/functions";
+import { addCart } from "./duct-functions";
 class Product extends Component {
   shouldComponentUpdate(nP, nS) {
     const thiState = this.props.thisState;
@@ -39,7 +43,26 @@ class Product extends Component {
     }, 300);
   };
 
+  addToCart = () => {
+    // Dom effects
+    addCart();
+    // Copy of cart items
+    var cartState = JSON.parse(JSON.stringify(this.props.cartState.items));
+    // Copy of the product obj
+    var product = JSON.parse(JSON.stringify(this.props.location.state));
+    product.quantity = this.props.thisState.quantity;
+    // Push the item the the cart array
+    cartState.push(product);
+    // Change State
+    this.props.cartAddItem(cartState);
+    this.props.resetFromProduct();
+  };
+
   render() {
+    if (this.props.history.action === "POP") {
+      this.props.history.push("/");
+      return null;
+    }
     console.log("Product(Single) -> REDNER!!!");
     let displayPrice =
       this.props.thisState.price * this.props.thisState.quantity;
@@ -64,14 +87,34 @@ class Product extends Component {
                 type="number"
                 value={this.props.thisState.quantity}
                 onChange={this.pickQuantity}
+                className="inside-product-input"
               />
-              <div className="p-i-w-l-i">
+              <div className="p-i-w-l-i" onClick={this.addToCart}>
                 <img
                   src={CartLogo}
                   alt="cart-logo"
                   className="product-cart-icon"
                 />
-                <p className="i-p-d-i-d-p">Add to Cart</p>
+                <p className="i-p-d-i-d-p" onClick={this.addToCart}>
+                  Add to Cart
+                </p>
+
+                <div className="product-loading-spinner">
+                  <div className="loading-spinner-inside">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
               </div>
               <p className="product-inside-total-price">${displayPrice}</p>
               <p
@@ -80,6 +123,17 @@ class Product extends Component {
               >
                 Back to Products
               </p>
+              <div className="product-checkout-box">
+                <p className="product-checkout-p">
+                  <span>{this.props.location.state.title}</span> has been added
+                  successfully to your cart
+                  <br />
+                  Click below for CheckOut
+                </p>
+                <div className="product-checkout-btn-div">
+                  <p className="product-checkout-btn-p">CheckOut</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -96,12 +150,16 @@ const mapDispatchToProps = (dispatch) => {
         type: "priceUpdate",
         val: price,
       }),
+    cartAddItem: (cartArr) => dispatch(cartActionTypes.cartAddItem(cartArr)),
+    resetFromProduct: () => dispatch(productsActionTypes.resetFromProduct()),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     thisState: state.SingleProduct,
+    cartState: state.CartReducer,
+    productsState: state.ProductsBox,
   };
 };
 

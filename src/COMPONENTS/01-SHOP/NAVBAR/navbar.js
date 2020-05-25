@@ -17,7 +17,10 @@ import { connect } from "react-redux";
 import actionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
 
 class Navbar extends Component {
-  shouldComponentUpdate() {
+  shouldComponentUpdate(nP, nS) {
+    if (nP.cartItems.length !== this.props.cartItems.length) {
+      return true;
+    }
     return false;
   }
 
