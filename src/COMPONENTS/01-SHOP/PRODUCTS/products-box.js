@@ -13,7 +13,13 @@ import {
   retriveIndex,
 } from "./functions";
 // import dom manipulation functions
-import { activeSpan, removeActiceSpan, itemBoxOut, itemBoxIn } from "./box-dom";
+import {
+  activeSpan,
+  removeActiceSpan,
+  itemBoxOut,
+  itemBoxIn,
+  activeNavbarBtn,
+} from "./box-dom";
 import { onlyRemoveDom } from "../NAVBAR/functions";
 
 class ProductsBox extends Component {
@@ -35,6 +41,8 @@ class ProductsBox extends Component {
   componentDidMount() {
     // Active span on the current page
     activeSpan(this.props.productsState.pages - 1);
+    // Active nav btn when user pressed on back at the product page
+    activeNavbarBtn();
   }
 
   changePage = (e) => {

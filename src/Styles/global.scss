@@ -1,5 +1,7 @@
 $primaryColor: #706fd3;
 $secondaryColor: #f86d70;
+$thirdColor: #fbbebe;
+
 @mixin absolute($top, $left, $background, $width, $height) {
   position: absolute;
   top: $top;

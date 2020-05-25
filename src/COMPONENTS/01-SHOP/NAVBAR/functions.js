@@ -35,16 +35,22 @@ export const productsBtn = (classN) => {
 };
 
 export const onlyRemoveDom = () => {
-  // first Remove
-  document.querySelector(".nav-active-div").classList.remove("nav-active-div");
-  document.querySelector(".btn-active").classList.remove("btn-active");
-  document
-    .querySelector(".expand-p-active")
-    .classList.remove("expand-p-active");
-  if (document.querySelector(".expand-div-click-on")) {
+  try {
+    // first Remove
     document
-      .querySelector(".expand-div-click-on")
-      .classList.remove("expand-div-click-on");
+      .querySelector(".nav-active-div")
+      .classList.remove("nav-active-div");
+    document.querySelector(".btn-active").classList.remove("btn-active");
+    document
+      .querySelector(".expand-p-active")
+      .classList.remove("expand-p-active");
+    if (document.querySelector(".expand-div-click-on")) {
+      document
+        .querySelector(".expand-div-click-on")
+        .classList.remove("expand-div-click-on");
+    }
+  } catch {
+    console.log("onlyRemove err");
   }
 };
 
@@ -108,3 +114,9 @@ export const sectionArr = [
     clickEvent: (value) => value,
   },
 ];
+
+export const productSectionOut = () => {
+  document
+    .querySelector(".product-single-div")
+    .classList.add("product-single-div-out");
+};

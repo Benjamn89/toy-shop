@@ -9,6 +9,7 @@ import {
   retriveSection,
   circleDomMani,
   sectionArr,
+  productSectionOut,
 } from "./functions";
 
 // Import all for redux
@@ -41,15 +42,15 @@ class Navbar extends Component {
   moveToSection = (e) => {
     // Taking care to the style inside the nav
     const classN = e.target.getAttribute("keyname");
+    const section = retriveSection(classN, this.props.logOn.view);
+    productsBtn(classN);
     if (this.props.location.pathname.length > 1) {
-      const section = retriveSection(classN, this.props.logOn.view);
       this.props.changeView(section);
-      productsBtn(classN);
-      this.props.history.push("/");
+      productSectionOut();
+      setTimeout(() => {
+        this.props.history.push("/");
+      }, 300);
     } else {
-      productsBtn(classN);
-      // Retrive the section name
-      const section = retriveSection(classN, this.props.logOn.view);
       setTimeout(() => {
         this.props.changeView(section);
       }, 300);

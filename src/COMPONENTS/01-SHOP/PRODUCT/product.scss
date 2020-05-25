@@ -1,0 +1,147 @@
+.product-single-div {
+  animation: productSectionIn 0.3s linear;
+}
+.product-single-div-out {
+  animation: productSectionOut 0.3s linear forwards;
+}
+
+.product-single-div * {
+  transition: 0.3s;
+}
+
+@mixin displayFlexProduct($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+@mixin positionProdcut($position, $top, $left, $width) {
+  position: $position;
+  top: $top;
+  left: $left;
+  width: $width;
+}
+
+.product-single-div {
+  @include displayFlexProduct(center, center, unset);
+  height: 100vh;
+}
+
+.product-img-desc-div {
+  @include displayFlexProduct(center, flex-start, row);
+  height: 70%;
+  width: 70%;
+}
+.inside-product-wrap-div {
+  width: 50%;
+  height: 70%;
+  text-align: center;
+  img {
+    max-width: 80%;
+    max-height: 100%;
+  }
+}
+
+.inside-product-div {
+  width: 50%;
+}
+.inside-product-title {
+  margin-bottom: 5%;
+  font-weight: 600;
+}
+.inside-product-desc {
+  letter-spacing: 0.7px;
+  line-height: 1.5;
+  color: #576574;
+}
+
+.inside-product-desc-input-div {
+  @include displayFlexProduct(unset, center, row);
+  margin-top: 70px;
+  @include positionProdcut(relative, unset, unset, 300px);
+
+  input {
+    width: 45%;
+    height: 50px;
+    padding-left: 20px;
+    border: solid 0.5px;
+    border-right: none;
+    border-radius: 4px;
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    outline: none;
+    font-size: 20px;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+.p-i-w-l-i {
+  @include displayFlexProduct(center, center, row);
+  @include positionProdcut(relative, unset, unset, 55%);
+  color: #fff;
+  background-color: #706fd3;
+  height: 50px;
+  border-radius: 4px;
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+  font-weight: 600;
+  cursor: pointer;
+  .product-cart-icon {
+    position: absolute;
+    left: 10px;
+    height: 20px;
+  }
+  .spinner-btn-product {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 30px;
+  }
+}
+.product-inside-total-price {
+  @include positionProdcut(absolute, unset, 50%, unset);
+  position: absolute;
+  bottom: -50px;
+  color: #f86d70;
+  font-size: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.product-back-to-products {
+  @include positionProdcut(absolute, unset, 50%, 200px);
+  bottom: -150px;
+  background: #f86d70;
+  height: 50px;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  padding: 10px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.8;
+  cursor: pointer;
+}
+.product-back-to-products:hover {
+  transform: translateX(-50%) translateY(-10%);
+}
+
+@keyframes productSectionIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes productSectionOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

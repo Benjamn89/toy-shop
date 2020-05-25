@@ -8,11 +8,11 @@
   transition: 0.3s;
 }
 .section-in {
-  -webkit-animation: 0.3s sectionIn forwards;
+  -webkit-animation: 0.3s sectionIn linear forwards;
   animation: 0.3s sectionIn forwards;
 }
 .section-out {
-  -webkit-animation: 0.3s sectionOut forwards;
+  -webkit-animation: 0.3s sectionOut linear forwards;
   animation: 0.3s sectionOut forwards;
 }
 

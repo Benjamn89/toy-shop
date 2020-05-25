@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 // Import Components
 import Navbar from "./NAVBAR/navbar";
 import Products from "./PRODUCTS/products";
@@ -9,6 +9,13 @@ import Product from "./PRODUCT/product";
 
 import "./shop-container.scss";
 class LogedIn extends Component {
+  shouldComponentUpdate(nP, nS) {
+    if (this.props.logOn.view !== nP.logOn.view) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     let currectView = <About />;
     if (this.props.logOn.view === "Products") {
@@ -34,4 +41,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(LogedIn);
+export default connect(mapStateToProps, null)(withRouter(LogedIn));

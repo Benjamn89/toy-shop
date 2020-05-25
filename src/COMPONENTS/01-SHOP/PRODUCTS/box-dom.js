@@ -47,3 +47,14 @@ export const itemBoxIn = (side = null) => {
       .classList.remove("wrap-products-out-left");
   }
 };
+
+export const activeNavbarBtn = () => {
+  if (!document.querySelector(".nav-active-div")) {
+    // Then add
+    document.querySelector(".products-div").classList.add("nav-active-div");
+    document.querySelector(".products-div-btn").classList.add("btn-active");
+    document
+      .querySelector(".expand-p-products")
+      .classList.add("expand-p-active");
+  }
+};
