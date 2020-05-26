@@ -8,6 +8,8 @@ import CartLogo from "../../../media/cart-logo.png";
 import actionTypes from "../../../REDUCERS/03-SINGLE PRODUCT/actionTypes";
 import cartActionTypes from "../../../REDUCERS/01-CART/actionTypes";
 import productsActionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
+import logActionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
+
 // Import functions
 import { productSectionOut } from "../NAVBAR/functions";
 import { addCart } from "./duct-functions";
@@ -56,6 +58,14 @@ class Product extends Component {
     // Change State
     this.props.cartAddItem(cartState);
     this.props.resetFromProduct();
+  };
+
+  moveToCheckout = () => {
+    this.props.changeView("Cart");
+    productSectionOut();
+    setTimeout(() => {
+      this.props.history.goBack();
+    }, 300);
   };
 
   render() {
@@ -127,11 +137,14 @@ class Product extends Component {
                 <p className="product-checkout-p">
                   <span>{this.props.location.state.title}</span> has been added
                   successfully to your cart
-                  <br />
-                  Click below for CheckOut
                 </p>
                 <div className="product-checkout-btn-div">
-                  <p className="product-checkout-btn-p">CheckOut</p>
+                  <p
+                    className="product-checkout-btn-p"
+                    onClick={this.moveToCheckout}
+                  >
+                    CheckOut
+                  </p>
                 </div>
               </div>
             </div>
@@ -152,6 +165,7 @@ const mapDispatchToProps = (dispatch) => {
       }),
     cartAddItem: (cartArr) => dispatch(cartActionTypes.cartAddItem(cartArr)),
     resetFromProduct: () => dispatch(productsActionTypes.resetFromProduct()),
+    changeView: (section) => dispatch(logActionTypes.changeView(section)),
   };
 };
 

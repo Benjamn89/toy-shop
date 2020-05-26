@@ -22,5 +22,5 @@ export const addCart = () => {
     document
       .querySelector(".product-checkout-box")
       .classList.add("product-checkout-box-in");
-  }, 2000);
+  }, 1500);
 };
