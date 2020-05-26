@@ -108,7 +108,6 @@ class Product extends Component {
                 <p className="i-p-d-i-d-p" onClick={this.addToCart}>
                   Add to Cart
                 </p>
-
                 <div className="product-loading-spinner">
                   <div className="loading-spinner-inside">
                     <div></div>
