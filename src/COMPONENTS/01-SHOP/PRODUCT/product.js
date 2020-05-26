@@ -30,14 +30,6 @@ class Product extends Component {
     this.props.priceUpdate(this.props.location.state.price);
   }
 
-  pickQuantity = (e) => {
-    let intTarget = parseInt(e.target.value);
-    if (isNaN(intTarget)) {
-      intTarget = 1;
-    }
-    this.props.changeQuantity(intTarget);
-  };
-
   goToProducts = () => {
     productSectionOut();
     setTimeout(() => {
@@ -53,6 +45,7 @@ class Product extends Component {
     // Copy of the product obj
     var product = JSON.parse(JSON.stringify(this.props.location.state));
     product.quantity = this.props.thisState.quantity;
+    product.totalPrice = product.quantity * product.price;
     // Push the item the the cart array
     cartState.push(product);
     // Change State
@@ -66,6 +59,22 @@ class Product extends Component {
     setTimeout(() => {
       this.props.history.goBack();
     }, 300);
+  };
+
+  changeQuantity = (calc) => {
+    let itemQuantity = parseInt(
+      document.querySelector(".i-p-number").innerHTML
+    );
+    if (calc === "down") {
+      itemQuantity--;
+    } else {
+      itemQuantity++;
+    }
+
+    if (itemQuantity < 1) {
+      return null;
+    }
+    this.props.changeQuantity(itemQuantity);
   };
 
   render() {
@@ -93,12 +102,19 @@ class Product extends Component {
               dolore magna aliqua. Ut enim ad minim veniam
             </p>
             <div className="inside-product-desc-input-div">
-              <input
-                type="number"
-                value={this.props.thisState.quantity}
-                onChange={this.pickQuantity}
-                className="inside-product-input"
-              />
+              <div className="inside-product-input-div">
+                <span
+                  className="i-p-arrow-down"
+                  onClick={() => this.changeQuantity("down")}
+                ></span>
+                <span className="i-p-number">
+                  {this.props.thisState.quantity}
+                </span>
+                <span
+                  className="i-p-arrow-up"
+                  onClick={() => this.changeQuantity("up")}
+                ></span>
+              </div>
               <div className="p-i-w-l-i" onClick={this.addToCart}>
                 <img
                   src={CartLogo}
@@ -137,13 +153,11 @@ class Product extends Component {
                   <span>{this.props.location.state.title}</span> has been added
                   successfully to your cart
                 </p>
-                <div className="product-checkout-btn-div">
-                  <p
-                    className="product-checkout-btn-p"
-                    onClick={this.moveToCheckout}
-                  >
-                    CheckOut
-                  </p>
+                <div
+                  className="product-checkout-btn-div"
+                  onClick={this.moveToCheckout}
+                >
+                  <p className="product-checkout-btn-p">CheckOut</p>
                 </div>
               </div>
             </div>

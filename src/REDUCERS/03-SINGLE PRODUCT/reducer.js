@@ -1,5 +1,5 @@
 const initialState = {
-  quantity: 0,
+  quantity: 1,
   price: false,
 };
 

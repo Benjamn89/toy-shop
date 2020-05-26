@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import "./cart.scss";
 import { connect } from "react-redux";
+// Import functions
+import { sumPrice } from "./functions";
 
 class Cart extends Component {
   render() {
     console.log("Cart -> REDNER!!!");
-    console.log(this.props.thisState);
+    const totalPrice = sumPrice(this.props.thisState.items);
     return (
       <section id="Cart">
-        <h1 className="CLASSNAME">Page under bulding...</h1>
-        {this.props.thisState.items.map((el) => {
+        {this.props.thisState.items.map((el, ind) => {
           return (
-            <div className="cart-item-div">
+            <div className="cart-item-div" key={el.title + ind}>
               <img src={el.img} alt="cart-item-img" className="cart-item-img" />
               <div className="cart-inside-item-div">
                 <h1 className="cart-inside-item-h1">{el.title}</h1>
@@ -21,7 +22,7 @@ class Cart extends Component {
               </div>
               <div className="cart-inside2-item-h1">
                 <h1 className="cart-inside2-h1">Price</h1>
-                <p className="cart-inside2-p">{el.price * el.quantity}$</p>
+                <p className="cart-inside2-p">{el.totalPrice}$</p>
               </div>
               <div className="cart-remove-btn-div">
                 <div></div>
@@ -32,11 +33,15 @@ class Cart extends Component {
         })}
         <div className="cart-subtotal-div">
           <h1 className="cart-subtotal-h1">
-            Sub total: <span>--$</span>
+            Sub total: <span>{totalPrice}$</span>
           </h1>
           <div className="cart-inside-subtotal-div">
-            <p>Payment</p>
-            <p>Keep Shoping</p>
+            <div className="c-i-sb-1">
+              <p className="c-i-sb-p1">Payment</p>
+            </div>
+            <div className="c-i-sb-2">
+              <p className="c-i-sb-p2">Continue Shopping</p>
+            </div>
           </div>
         </div>
       </section>

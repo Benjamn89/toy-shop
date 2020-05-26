@@ -15,27 +15,30 @@
   align-items: $align;
   flex-direction: $direction;
 }
-@mixin positionProdcut($position, $top, $left, $width) {
+@mixin positionProdcut($position, $top, $left, $width, $height) {
   position: $position;
   top: $top;
   left: $left;
+  width: $width;
+  height: $height;
+}
+@mixin onlyHeightWidth($height, $width) {
+  height: $height;
   width: $width;
 }
 
 .product-single-div {
   @include displayFlexProduct(center, center, unset);
-  height: 1000px;
   overflow-y: hidden;
+  height: 1000px;
 }
 
 .product-img-desc-div {
   @include displayFlexProduct(center, flex-start, row);
-  height: 70%;
-  width: 70%;
+  @include onlyHeightWidth(70%, 70%);
 }
 .inside-product-wrap-div {
-  width: 50%;
-  height: 70%;
+  @include onlyHeightWidth(70%, 50%);
   text-align: center;
   img {
     max-width: 80%;
@@ -59,35 +62,61 @@
 .inside-product-desc-input-div {
   @include displayFlexProduct(unset, center, row);
   margin-top: 70px;
-  @include positionProdcut(relative, unset, unset, 300px);
-
-  input {
-    width: 45%;
-    height: 50px;
-    padding-left: 20px;
-    border: solid 0.5px;
-    border-right: none;
-    border-radius: 4px;
-    border-top-right-radius: unset;
-    border-bottom-right-radius: unset;
-    outline: none;
-    font-size: 20px;
-  }
-
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  .inside-product-input-added {
-    pointer-events: none;
-    opacity: 0.7;
-  }
+  @include positionProdcut(relative, unset, unset, 300px, unset);
+}
+.inside-product-input-div {
+  @include onlyHeightWidth(50px, 45%);
+  border: solid 0.5px;
+  position: relative;
+  border-radius: 4px;
+  border-right: none;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+.inside-product-input-div-added {
+  opacity: 0.7;
+  pointer-events: none;
+}
+.inside-product-input-div span {
+  position: absolute;
+}
+.i-p-number {
+  font-size: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1.7;
+}
+.i-p-arrow-down,
+.i-p-arrow-up {
+  @include onlyHeightWidth(12px, 12px);
+  border-top: 2px solid;
+  border-left: 2px solid;
+  top: 34%;
+  color: #f86d70;
+  opacity: 0;
+  cursor: pointer;
+}
+.inside-product-input-div:hover .i-p-arrow-down {
+  opacity: 1;
+  left: 19%;
+}
+.inside-product-input-div:hover .i-p-arrow-up {
+  opacity: 1;
+  left: 70%;
+}
+.i-p-arrow-up {
+  transform: rotate(135deg);
+  left: 90%;
+}
+.i-p-arrow-down {
+  transform: rotate(315deg);
+  left: 0;
 }
 .p-i-w-l-i {
   @include displayFlexProduct(center, center, row);
-  @include positionProdcut(relative, unset, unset, 55%);
+  @include positionProdcut(relative, unset, unset, 55%, 50px);
   color: #fff;
   background-color: #706fd3;
-  height: 50px;
   border-radius: 4px;
   border-top-left-radius: unset;
   border-bottom-left-radius: unset;
@@ -103,10 +132,8 @@
     transform: scale(0);
   }
   .spinner-btn-product {
-    position: absolute;
+    @include positionProdcut(absolute, 0, unset, unset, 30px);
     right: 0;
-    top: 0;
-    height: 30px;
   }
 }
 .p-i-w-l-i-added {
@@ -117,19 +144,16 @@
   transform: scale(0);
 }
 .product-inside-total-price {
-  @include positionProdcut(absolute, unset, 50%, unset);
-  position: absolute;
+  @include positionProdcut(absolute, unset, 50%, unset, unset);
   bottom: -50px;
   color: #f86d70;
   font-size: 30px;
-  left: 50%;
   transform: translateX(-50%);
 }
 .product-back-to-products {
-  @include positionProdcut(absolute, unset, 50%, 200px);
+  @include positionProdcut(absolute, unset, 50%, 200px, 50px);
   bottom: -150px;
   background: #f86d70;
-  height: 50px;
   transform: translateX(-50%);
   border-radius: 4px;
   padding: 10px;
@@ -145,13 +169,11 @@
 }
 
 .product-checkout-box {
+  @include positionProdcut(absolute, unset, 50%, unset, 200px);
   min-width: 350px;
   border: solid 1px #706fd3;
   border-radius: 4px;
-  height: 200px;
-  position: absolute;
   bottom: -450px;
-  left: 50%;
   transform: translateX(-50%) translateY(200%);
   background: #706fd3;
   text-align: center;
@@ -193,9 +215,8 @@
   }
 }
 .product-checkout-btn-div {
+  @include positionProdcut(relative, unset, unset, 50%, 35%);
   border: solid 2px #fff;
-  height: 35%;
-  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,15 +226,15 @@
   font-weight: 600;
   font-size: 17px;
   cursor: pointer;
-  position: relative;
   overflow: hidden;
   transition: unset;
+  p {
+    pointer-events: none;
+  }
 }
 .product-checkout-btn-div::after {
   content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  @include positionProdcut(absolute, unset, unset, 100%, 100%);
   background: #fff;
   border-radius: 50px;
   transition: 0.5s;
@@ -260,13 +281,9 @@
   }
 }
 .loading-spinner-inside div {
-  left: -110px;
-  top: 14px;
-  position: absolute;
+  @include positionProdcut(absolute, 14px, -110px, 3px, 9px);
   animation: loading-spinner-inside linear 1s infinite;
   background: #fbbebe;
-  width: 3px;
-  height: 9px;
   border-radius: 1.5px / 2.34px;
   transform-origin: 1.5px 21.5px;
 }
@@ -343,9 +360,7 @@
   opacity: 1;
 }
 .loading-spinner-inside {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  @include positionProdcut(relative, unset, unset, 100%, 100%);
   transform: translateZ(0) scale(0.74);
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */

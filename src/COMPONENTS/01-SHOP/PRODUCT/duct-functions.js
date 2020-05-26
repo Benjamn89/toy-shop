@@ -17,8 +17,8 @@ export const addCart = () => {
       .querySelector(".i-p-d-i-d-p")
       .classList.remove("i-p-d-i-d-p-clear");
     document
-      .querySelector(".inside-product-input")
-      .classList.add("inside-product-input-added");
+      .querySelector(".inside-product-input-div")
+      .classList.add("inside-product-input-div-added");
     document
       .querySelector(".product-checkout-box")
       .classList.add("product-checkout-box-in");
