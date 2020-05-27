@@ -115,10 +115,10 @@ class ProductsBox extends Component {
           id={el.title}
         >
           <img src={el.img} alt={el.title} className="products-img" />
-          <hr />
+          <hr className="products-box-hr" />
           <h1 className="products-title">{el.title}</h1>
           <p className="products-desc">{el.desc}</p>
-          <hr />
+          <hr className="products-box-hr" />
           <p className="products-price">{el.price}$</p>
         </div>
       );

@@ -9,3 +9,9 @@ export const sumPrice = (itemsArr) => {
 
   return sumArr;
 };
+
+export const removeItem = (index) => {
+  document
+    .querySelectorAll(".cart-item-div")
+    [index].classList.add("cart-item-div-remove");
+};

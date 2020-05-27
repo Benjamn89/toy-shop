@@ -43,7 +43,6 @@ class Navbar extends Component {
   };
 
   moveToSection = (e) => {
-    // Taking care to the style inside the nav
     const classN = e.target.getAttribute("keyname");
     const section = retriveSection(classN, this.props.logOn.view);
     productsBtn(classN);

@@ -1,0 +1,203 @@
+.cart-payment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(12, 0, 0, 0.445);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .payment-hr {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: none;
+    border: solid 5px #fbbebe;
+  }
+}
+.cart-payment-inside-div {
+  height: 60vh;
+  max-height: 400px;
+  width: 90vw;
+  max-width: 350px;
+  border-radius: 10px;
+  background: #fff;
+  position: relative;
+}
+.cart-payment-exit-div {
+  cursor: pointer;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  div {
+    height: 13px;
+    width: 2px;
+    background: lightgray;
+    position: absolute;
+    pointer-events: none;
+  }
+  div:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  div:nth-child(2) {
+    transform: rotate(-45deg);
+  }
+  &:hover {
+    background: lightgray;
+  }
+  &:hover div {
+    background: #fff;
+  }
+}
+.cart-payment-img-wrapper {
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  border: 1px solid #f86d70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: solid 1px #f86d70;
+  }
+}
+.cart-payment-inside-header {
+  height: 25%;
+  position: relative;
+}
+.cart-payment-header-title {
+  font-weight: 500;
+  text-align: center;
+  padding-top: 50px;
+  span {
+    color: #706fd3;
+  }
+}
+.cart-payment-inside-center {
+  padding: 20px 0;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  img {
+    position: absolute;
+  }
+
+  .payment-img-visa-blue {
+    right: 40px;
+    top: 26px;
+    width: 30px;
+    height: 30px;
+  }
+  .payment-img-code {
+    top: 69px;
+    right: 48px;
+    height: 20px;
+    width: 20px;
+  }
+  .payment-img-calendar {
+    top: 70px;
+    left: 122px;
+    height: 20px;
+    width: 20px;
+  }
+}
+.cart-payment-inside-center input {
+  height: 40px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  border: solid 2px;
+  border-radius: 4px;
+  padding-left: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.cart-payment-inside-center input:nth-child(1) {
+  width: 80%;
+  height: 40px;
+  border-bottom: none;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+}
+.cart-payment-inside-center input:nth-child(2) {
+  width: 40%;
+  border-right: none;
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+.cart-payment-inside-center input:nth-child(3) {
+  width: 40%;
+  border-top-right-radius: unset;
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.cart-payment-inside-center input:focus {
+  border-bottom: 2px solid #fbc531;
+  border-top: 2px solid #fbc531;
+  border-right: 2px solid #fbc531;
+  border-left: 2px solid #fbc531;
+}
+.cart-payment-inside-remember-div {
+  height: 12%;
+  width: 60%;
+  margin: 15px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: outset 2px;
+  box-shadow: 0 5px 10px hsla(0, 0%, 83%, 0.815);
+  label {
+    margin-left: 15px;
+    font-weight: 500;
+  }
+  input {
+    cursor: pointer;
+  }
+}
+.cart-payment-inside-btn {
+  height: 13%;
+  width: 70%;
+  border-radius: 10px;
+  margin: 25px auto 0 auto;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #fbc531, #ffd32a, #ffdd59);
+  &:hover p {
+    color: #fff;
+  }
+}
+.cart-payment--btn-p {
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 3;
+  pointer-events: none;
+}
+@media only screen and (max-width: 400px) {
+  .cart-payment-inside-div {
+    max-width: 300px;
+  }
+}

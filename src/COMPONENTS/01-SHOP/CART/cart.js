@@ -1,15 +1,40 @@
 import React, { Component } from "react";
 import "./cart.scss";
 import { connect } from "react-redux";
+import actionTypes from "../../../REDUCERS/01-CART/actionTypes";
+import logOnActionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
+// Import components
+import Payment from "./payment";
 // Import functions
-import { sumPrice } from "./functions";
+import { sumPrice, removeItem } from "./functions";
+import { retriveSection, productsBtn } from "../NAVBAR/functions";
 
 class Cart extends Component {
+  removeItem = (e) => {
+    const indexItem = parseInt(e.target.getAttribute("item-index"));
+    // Copy of the item index
+    let copyState = JSON.parse(JSON.stringify(this.props.thisState.items));
+    copyState.splice(indexItem, 1);
+    // Dom
+    removeItem(indexItem);
+    setTimeout(() => {
+      this.props.removeItemFromCart(copyState);
+    }, 400);
+  };
+
+  moveToProducts = () => {
+    productsBtn("products");
+    retriveSection("products", "Cart");
+    setTimeout(() => {
+      this.props.moveToProducts("Products");
+    }, 300);
+  };
+
   render() {
     console.log("Cart -> REDNER!!!");
     const totalPrice = sumPrice(this.props.thisState.items);
     return (
-      <section id="Cart">
+      <section id="Cart" className="section-in">
         {this.props.thisState.items.map((el, ind) => {
           return (
             <div className="cart-item-div" key={el.title + ind}>
@@ -24,7 +49,11 @@ class Cart extends Component {
                 <h1 className="cart-inside2-h1">Price</h1>
                 <p className="cart-inside2-p">{el.totalPrice}$</p>
               </div>
-              <div className="cart-remove-btn-div">
+              <div
+                item-index={ind}
+                className="cart-remove-btn-div"
+                onClick={this.removeItem}
+              >
                 <div></div>
                 <div></div>
               </div>
@@ -39,15 +68,24 @@ class Cart extends Component {
             <div className="c-i-sb-1">
               <p className="c-i-sb-p1">Payment</p>
             </div>
-            <div className="c-i-sb-2">
+            <div className="c-i-sb-2" onClick={this.moveToProducts}>
               <p className="c-i-sb-p2">Continue Shopping</p>
             </div>
           </div>
         </div>
+        <Payment />
       </section>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeItemFromCart: (items) =>
+      dispatch(actionTypes.removeItemFromCart(items)),
+    moveToProducts: (section) => dispatch(logOnActionTypes.changeView(section)),
+  };
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -55,4 +93,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

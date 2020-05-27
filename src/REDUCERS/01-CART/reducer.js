@@ -9,6 +9,11 @@ const reducer = (state = initialState, action) => {
       items: action.items,
     };
   }
+  if (action.type === "removeItemFromCart") {
+    return {
+      items: action.items,
+    };
+  }
   return state;
 };
 

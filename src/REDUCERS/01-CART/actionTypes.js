@@ -5,6 +5,12 @@ const actionTypes = {
       items,
     };
   },
+  removeItemFromCart: (items) => {
+    return {
+      type: "removeItemFromCart",
+      items,
+    };
+  },
 };
 
 export default actionTypes;
