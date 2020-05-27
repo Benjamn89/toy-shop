@@ -77,7 +77,7 @@ class Cart extends Component {
             </div>
           </div>
         </div>
-        <Payment />
+        <Payment totalPrice={totalPrice} />
       </section>
     );
   }

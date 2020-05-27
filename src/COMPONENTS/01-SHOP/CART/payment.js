@@ -62,7 +62,7 @@ class Payment extends Component {
             <label>Remember me</label>
           </div>
           <div className="cart-payment-inside-btn">
-            <p className="cart-payment-btn-p">Pay 50$</p>
+            <p className="cart-payment-btn-p">Pay {this.props.totalPrice}$</p>
           </div>
         </div>
       </div>

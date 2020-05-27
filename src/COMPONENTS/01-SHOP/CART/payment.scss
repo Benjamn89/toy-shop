@@ -131,20 +131,20 @@
   }
 
   .payment-img-visa-blue {
-    right: 40px;
+    right: 65px;
     top: 26px;
     width: 30px;
     height: 30px;
   }
   .payment-img-code {
     top: 69px;
-    right: 48px;
+    right: 68px;
     height: 20px;
     width: 20px;
   }
   .payment-img-calendar {
     top: 70px;
-    left: 122px;
+    left: 132px;
     height: 20px;
     width: 20px;
   }
@@ -226,5 +226,19 @@
 @media only screen and (max-width: 400px) {
   .cart-payment-inside-div {
     max-width: 300px;
+  }
+  .cart-payment-inside-center {
+    .payment-img-visa-blue {
+      right: 40px;
+      top: 26px;
+    }
+    .payment-img-code {
+      top: 69px;
+      right: 48px;
+    }
+    .payment-img-calendar {
+      top: 70px;
+      left: 122px;
+    }
   }
 }
