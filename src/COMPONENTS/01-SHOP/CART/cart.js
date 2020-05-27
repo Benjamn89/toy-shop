@@ -6,7 +6,7 @@ import logOnActionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
 // Import components
 import Payment from "./payment";
 // Import functions
-import { sumPrice, removeItem } from "./functions";
+import { sumPrice, removeItem, toPayment } from "./functions";
 import { retriveSection, productsBtn } from "../NAVBAR/functions";
 
 class Cart extends Component {
@@ -28,6 +28,10 @@ class Cart extends Component {
     setTimeout(() => {
       this.props.moveToProducts("Products");
     }, 300);
+  };
+
+  toPayment = () => {
+    toPayment();
   };
 
   render() {
@@ -65,7 +69,7 @@ class Cart extends Component {
             Sub total: <span>{totalPrice}$</span>
           </h1>
           <div className="cart-inside-subtotal-div">
-            <div className="c-i-sb-1">
+            <div className="c-i-sb-1" onClick={this.toPayment}>
               <p className="c-i-sb-p1">Payment</p>
             </div>
             <div className="c-i-sb-2" onClick={this.moveToProducts}>

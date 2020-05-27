@@ -5,16 +5,21 @@ import CartLogo from "../../../media/toy-logo.png";
 import CardBlue from "../../../media/card-blue.png";
 import Password from "../../../media/password.png";
 import Calendar from "../../../media/calendar.png";
+// Import functions
+import { exitPayment } from "./functions";
 class Payment extends Component {
-  cardNumder = (e) => {
-    console.log(e.target.value);
+  cardNumder = () => {
+    console.log("onChane must");
+  };
+  exitPayment = () => {
+    exitPayment();
   };
   render() {
     console.log("Payment -> REDNER!!!");
     return (
       <div className="cart-payment">
         <div className="cart-payment-inside-div">
-          <div className="cart-payment-exit-div">
+          <div className="cart-payment-exit-div" onClick={this.exitPayment}>
             <div></div>
             <div></div>
           </div>
@@ -57,7 +62,7 @@ class Payment extends Component {
             <label>Remember me</label>
           </div>
           <div className="cart-payment-inside-btn">
-            <p className="cart-payment--btn-p">Pay 50$</p>
+            <p className="cart-payment-btn-p">Pay 50$</p>
           </div>
         </div>
       </div>

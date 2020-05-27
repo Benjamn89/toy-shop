@@ -5,9 +5,9 @@
   height: 100%;
   width: 100%;
   background: rgba(12, 0, 0, 0.445);
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
   .payment-hr {
     width: 90%;
     margin: 0 auto;
@@ -15,6 +15,9 @@
     border: none;
     border: solid 5px #fbbebe;
   }
+}
+.cart-payment-in {
+  display: flex;
 }
 .cart-payment-inside-div {
   height: 60vh;
@@ -24,6 +27,30 @@
   border-radius: 10px;
   background: #fff;
   position: relative;
+  transition: 0.5s;
+  transform: translateY(-200%);
+}
+.cart-payment-inside-div-in {
+  animation: cartPaymentIn 0.5s forwards;
+}
+@keyframes cartPaymentIn {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.cart-payment-inside-div-out {
+  animation: cartPaymentOut 0.5s forwards;
+}
+@keyframes cartPaymentOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200%);
+  }
 }
 .cart-payment-exit-div {
   cursor: pointer;
@@ -189,7 +216,7 @@
     color: #fff;
   }
 }
-.cart-payment--btn-p {
+.cart-payment-btn-p {
   text-align: center;
   font-weight: 500;
   letter-spacing: 2px;
