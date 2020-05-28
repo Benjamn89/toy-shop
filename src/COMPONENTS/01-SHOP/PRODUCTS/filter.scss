@@ -40,13 +40,28 @@
   transition: 0.7s;
   background: none;
   cursor: pointer;
+  animation: movingFilterArrow 1.5s linear infinite;
+}
+@keyframes movingFilterArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .filter-arrow-wrap:hover {
   background: #f86d70;
 }
 .filter-arrow-wrap-close {
+  animation: unset;
+}
+.filter-arrow-wrap-turn {
+  transform: translateX(0) rotate(180deg);
   -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 .filter-arrow-wrap:hover > div {
   background: #fff;
