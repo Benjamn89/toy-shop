@@ -11,7 +11,7 @@ import productsActionTypes from "../../../REDUCERS/02-PRODUCTS-BOX/actionTypes";
 import logActionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
 
 // Import functions
-import { productSectionOut } from "../NAVBAR/functions";
+import { productSectionOut, productsBtn } from "../NAVBAR/functions";
 import { addCart } from "./duct-functions";
 class Product extends Component {
   shouldComponentUpdate(nP, nS) {
@@ -55,6 +55,7 @@ class Product extends Component {
 
   moveToCheckout = () => {
     this.props.changeView("Cart");
+    productsBtn("cart");
     productSectionOut();
     setTimeout(() => {
       this.props.history.goBack();

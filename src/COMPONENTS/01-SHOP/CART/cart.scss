@@ -4,7 +4,8 @@
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  background: #f86d70;
+  // background: #f86d70;
+  background: linear-gradient(to right, #f86d70, #fbbebe);
 }
 
 #Cart {
@@ -139,7 +140,7 @@
   width: 50%;
   max-width: 300px;
   border-radius: 10px;
-  background: #f86d70;
+  background: linear-gradient(to right, #f86d70, #fbbebe);
   margin: 0 auto 15px auto;
   line-height: 3.5;
   border: solid 2px #706fd3;

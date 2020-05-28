@@ -3,7 +3,8 @@
   position: fixed;
   height: 400px;
   width: 400px;
-  background-color: #f86d70;
+  // background-color: #f86d70;
+  background: linear-gradient(to right, #f86d70, #fbbebe);
   border-radius: 50%;
   z-index: -10;
 }

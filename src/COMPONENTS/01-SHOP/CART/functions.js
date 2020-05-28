@@ -34,3 +34,10 @@ export const toPayment = () => {
     .querySelector(".cart-payment-inside-div")
     .classList.add("cart-payment-inside-div-in");
 };
+
+export const enterPayment = () => {
+  document
+    .querySelector(".cart-payment-btn-p")
+    .classList.toggle("cart-payment-btn-p-out");
+  document.querySelector(".sk-chase").classList.toggle("sk-chase-in");
+};

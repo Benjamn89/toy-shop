@@ -6,13 +6,16 @@ import CardBlue from "../../../media/card-blue.png";
 import Password from "../../../media/password.png";
 import Calendar from "../../../media/calendar.png";
 // Import functions
-import { exitPayment } from "./functions";
+import { exitPayment, enterPayment } from "./functions";
 class Payment extends Component {
   cardNumder = () => {
     console.log("onChane must");
   };
   exitPayment = () => {
     exitPayment();
+  };
+  clickOnPayment = () => {
+    enterPayment();
   };
   render() {
     console.log("Payment -> REDNER!!!");
@@ -61,8 +64,19 @@ class Payment extends Component {
             <input type="checkbox" />
             <label>Remember me</label>
           </div>
-          <div className="cart-payment-inside-btn">
+          <div
+            className="cart-payment-inside-btn"
+            onClick={this.clickOnPayment}
+          >
             <p className="cart-payment-btn-p">Pay {this.props.totalPrice}$</p>
+            <div className="sk-chase">
+              <div className="sk-chase-dot"></div>
+              <div className="sk-chase-dot"></div>
+              <div className="sk-chase-dot"></div>
+              <div className="sk-chase-dot"></div>
+              <div className="sk-chase-dot"></div>
+              <div className="sk-chase-dot"></div>
+            </div>
           </div>
         </div>
       </div>
