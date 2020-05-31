@@ -33,6 +33,7 @@
 .cart-payment-inside-div-in {
   animation: cartPaymentIn 0.5s forwards;
 }
+
 @keyframes cartPaymentIn {
   from {
     transform: translateY(-200%);
@@ -42,7 +43,7 @@
   }
 }
 .cart-payment-inside-div-out {
-  animation: cartPaymentOut 0.5s forwards;
+  animation: cartPaymentOut 0.5s cubic-bezier(0.57, -1.29, 0.83, 0.67) forwards;
 }
 @keyframes cartPaymentOut {
   from {
@@ -218,6 +219,7 @@
     color: #fff;
   }
 }
+
 .cart-payment-btn-p {
   text-align: center;
   font-weight: 500;
@@ -227,25 +229,6 @@
 }
 .cart-payment-btn-p-out {
   transform: translateY(-40px);
-}
-@media only screen and (max-width: 400px) {
-  .cart-payment-inside-div {
-    max-width: 300px;
-  }
-  .cart-payment-inside-center {
-    .payment-img-visa-blue {
-      right: 40px;
-      top: 26px;
-    }
-    .payment-img-code {
-      top: 69px;
-      right: 48px;
-    }
-    .payment-img-calendar {
-      top: 70px;
-      left: 122px;
-    }
-  }
 }
 
 // Spinner Btn
@@ -337,5 +320,28 @@
   100%,
   0% {
     transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .cart-payment-inside-div {
+    max-width: 300px;
+  }
+  .cart-payment-inside-center {
+    .payment-img-visa-blue {
+      right: 40px;
+      top: 26px;
+    }
+    .payment-img-code {
+      top: 69px;
+      right: 48px;
+    }
+    .payment-img-calendar {
+      top: 70px;
+      left: 122px;
+    }
+  }
+  .sk-chase {
+    left: 95px;
   }
 }

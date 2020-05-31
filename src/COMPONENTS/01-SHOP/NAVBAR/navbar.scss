@@ -82,6 +82,9 @@
     letter-spacing: 5px;
   }
 }
+.navbar-div-disable {
+  pointer-events: none;
+}
 .squeeze-circle-div {
   position: absolute;
   height: 40px;

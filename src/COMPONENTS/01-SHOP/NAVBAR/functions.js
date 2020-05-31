@@ -132,3 +132,11 @@ export const productSectionOut = () => {
     .querySelector(".product-single-div")
     .classList.add("product-single-div-out");
 };
+
+export const disableBtns = () => {
+  document.querySelector(".cart-div").classList.toggle("navbar-div-disable");
+  document.querySelector(".about-div").classList.toggle("navbar-div-disable");
+  document
+    .querySelector(".products-div")
+    .classList.toggle("navbar-div-disable");
+};

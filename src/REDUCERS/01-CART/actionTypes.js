@@ -11,6 +11,16 @@ const actionTypes = {
       items,
     };
   },
+  paymentApproved: () => {
+    return {
+      type: "paymentApproved",
+    };
+  },
+  resetState: () => {
+    return {
+      type: "resetState",
+    };
+  },
 };
 
 export default actionTypes;

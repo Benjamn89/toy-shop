@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./cart.scss";
+import "./payment-success.scss";
 import { connect } from "react-redux";
 import actionTypes from "../../../REDUCERS/01-CART/actionTypes";
 import logOnActionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
@@ -7,8 +8,11 @@ import logOnActionTypes from "../../../REDUCERS/00-LOGIN-PAGE/actionType";
 import Payment from "./payment";
 import NoItems from "./no-items";
 // Import functions
-import { sumPrice, removeItem, toPayment } from "./functions";
-import { retriveSection, productsBtn } from "../NAVBAR/functions";
+import { sumPrice, removeItem, toPayment, enterPayment } from "./functions";
+import { retriveSection, productsBtn, disableBtns } from "../NAVBAR/functions";
+// Import media
+import PaymentSuccess from "../../../media/checkbox.png";
+import Greatful from "../../../media/greatful.png";
 
 class Cart extends Component {
   removeItem = (e) => {
@@ -33,6 +37,24 @@ class Cart extends Component {
 
   toPayment = () => {
     toPayment();
+  };
+
+  clickOnPayment = () => {
+    enterPayment();
+    setTimeout(() => {
+      disableBtns();
+      this.props.paymentApproved();
+    }, 1700);
+  };
+
+  toProducts = () => {
+    productsBtn("about");
+    retriveSection("about", "Cart");
+    disableBtns();
+    setTimeout(() => {
+      this.props.moveToProducts("About");
+      this.props.resetState();
+    }, 300);
   };
 
   render() {
@@ -84,8 +106,30 @@ class Cart extends Component {
               </div>
             </div>
           </div>
-          <Payment totalPrice={totalPrice} />
+          <Payment totalPrice={totalPrice} payment={this.clickOnPayment} />
         </React.Fragment>
+      );
+    }
+    if (this.props.thisState.payment) {
+      itemsInsideTheCart = (
+        <div className="payment-success-wrapper-div">
+          <div className="payment-success-inside1">
+            <img src={PaymentSuccess} alt="payment-success" className="" />
+            <h1 className="payment-success-inside1-h1">
+              Your payment has been successfully approved
+            </h1>
+          </div>
+          <div className="payment-success-inside2">
+            <img src={Greatful} alt="greatful" className="" />
+            <h1 className="paymant-success-inside2-h1">
+              Thank you for choosing our services <br />
+              We hope to see you again soon
+            </h1>
+            <div className="payment-success-inside2-btn-div">
+              <p onClick={this.toProducts}>Return To Home Page</p>
+            </div>
+          </div>
+        </div>
       );
     }
     return (
@@ -101,6 +145,8 @@ const mapDispatchToProps = (dispatch) => {
     removeItemFromCart: (items) =>
       dispatch(actionTypes.removeItemFromCart(items)),
     moveToProducts: (section) => dispatch(logOnActionTypes.changeView(section)),
+    paymentApproved: () => dispatch(actionTypes.paymentApproved()),
+    resetState: () => dispatch(actionTypes.resetState()),
   };
 };
 

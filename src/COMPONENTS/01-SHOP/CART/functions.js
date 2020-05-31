@@ -17,15 +17,21 @@ export const removeItem = (index) => {
 };
 
 export const exitPayment = () => {
-  document
-    .querySelector(".cart-payment-inside-div")
-    .classList.add("cart-payment-inside-div-out");
-  setTimeout(() => {
-    document.querySelector(".cart-payment").classList.remove("cart-payment-in");
+  try {
     document
       .querySelector(".cart-payment-inside-div")
-      .classList.remove("cart-payment-inside-div-out");
-  }, 400);
+      .classList.add("cart-payment-inside-div-out");
+    setTimeout(() => {
+      document
+        .querySelector(".cart-payment")
+        .classList.remove("cart-payment-in");
+      document
+        .querySelector(".cart-payment-inside-div")
+        .classList.remove("cart-payment-inside-div-out");
+    }, 550);
+  } catch {
+    console.log("exitPayment err");
+  }
 };
 
 export const toPayment = () => {
@@ -40,6 +46,10 @@ export const enterPayment = () => {
     .querySelector(".cart-payment-btn-p")
     .classList.toggle("cart-payment-btn-p-out");
   document.querySelector(".sk-chase").classList.toggle("sk-chase-in");
+
+  setTimeout(() => {
+    exitPayment();
+  }, 1100);
 };
 
 export const waitForImage = () => {
