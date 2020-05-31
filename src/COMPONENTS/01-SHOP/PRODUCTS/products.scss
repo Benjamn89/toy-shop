@@ -3,7 +3,13 @@
   position: fixed;
   height: 400px;
   width: 400px;
-  // background-color: #f86d70;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f86d70),
+    to(#fbbebe)
+  );
   background: linear-gradient(to right, #f86d70, #fbbebe);
   border-radius: 50%;
   z-index: -10;

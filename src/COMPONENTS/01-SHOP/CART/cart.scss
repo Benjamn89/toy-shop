@@ -4,7 +4,13 @@
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  // background: #f86d70;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f86d70),
+    to(#fbbebe)
+  );
   background: linear-gradient(to right, #f86d70, #fbbebe);
 }
 
@@ -15,6 +21,7 @@
 }
 
 #Cart * {
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .cart-item-div {
@@ -24,16 +31,28 @@
   max-width: 1000px;
   border: solid 2px #706fd3;
   margin: 0 auto 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   position: relative;
   overflow: hidden;
+  -webkit-transform-origin: 100% 0;
   transform-origin: 100% 0;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .cart-item-div-remove {
+  -webkit-transform: scaleY(0);
   transform: scaleY(0);
 }
 
@@ -87,11 +106,15 @@
   top: -25px;
   left: -10px;
   color: #ffb142;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
+  -webkit-transform: scaleY(0);
   transform: scaleY(0);
+  -webkit-transform-origin: 0 100%;
   transform-origin: 0 100%;
 }
 .cart-remove-btn-div:hover::after {
+  -webkit-transform: scaleY(1);
   transform: scaleY(1);
 }
 .cart-remove-btn-div:hover {
@@ -108,9 +131,11 @@
   border-radius: 4px;
 }
 .cart-remove-btn-div div:nth-child(1) {
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .cart-remove-btn-div div:nth-child(2) {
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 .cart-remove-btn-div:hover div {
@@ -140,6 +165,13 @@
   width: 50%;
   max-width: 300px;
   border-radius: 10px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f86d70),
+    to(#fbbebe)
+  );
   background: linear-gradient(to right, #f86d70, #fbbebe);
   margin: 0 auto 15px auto;
   line-height: 3.5;
@@ -164,11 +196,14 @@
   top: 0;
   left: 0;
   border-radius: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
 }
 .c-i-sb-1:hover::before,
 .c-i-sb-2:hover::before {
+  -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 .c-i-sb-1:hover p,
@@ -201,8 +236,11 @@
 @media only screen and (max-width: 700px) {
   .cart-item-div::before,
   .cart-item-div::after {
+    -webkit-transition: 0.3s;
     transition: 0.3s;
+    -webkit-transform-origin: 100% 0;
     transform-origin: 100% 0;
+    -webkit-transform: scale(0);
     transform: scale(0);
   }
 }

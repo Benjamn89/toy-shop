@@ -7,8 +7,15 @@
   opacity: 0;
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   h1 {
     margin-top: 45px;
@@ -28,7 +35,15 @@
   border-radius: 4px;
   margin-top: 50px;
   text-align: center;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f86d70),
+    to(#fbbebe)
+  );
   background: linear-gradient(to right, #f86d70, #fbbebe);
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
   p {
@@ -39,6 +54,7 @@
   }
 }
 .cart-no-items-back-div:hover {
+  -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
 }
 
@@ -74,57 +90,46 @@
 }
 .sk-circle .sk-circle2 {
   -webkit-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
   transform: rotate(30deg);
 }
 .sk-circle .sk-circle3 {
   -webkit-transform: rotate(60deg);
-  -ms-transform: rotate(60deg);
   transform: rotate(60deg);
 }
 .sk-circle .sk-circle4 {
   -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .sk-circle .sk-circle5 {
   -webkit-transform: rotate(120deg);
-  -ms-transform: rotate(120deg);
   transform: rotate(120deg);
 }
 .sk-circle .sk-circle6 {
   -webkit-transform: rotate(150deg);
-  -ms-transform: rotate(150deg);
   transform: rotate(150deg);
 }
 .sk-circle .sk-circle7 {
   -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .sk-circle .sk-circle8 {
   -webkit-transform: rotate(210deg);
-  -ms-transform: rotate(210deg);
   transform: rotate(210deg);
 }
 .sk-circle .sk-circle9 {
   -webkit-transform: rotate(240deg);
-  -ms-transform: rotate(240deg);
   transform: rotate(240deg);
 }
 .sk-circle .sk-circle10 {
   -webkit-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 .sk-circle .sk-circle11 {
   -webkit-transform: rotate(300deg);
-  -ms-transform: rotate(300deg);
   transform: rotate(300deg);
 }
 .sk-circle .sk-circle12 {
   -webkit-transform: rotate(330deg);
-  -ms-transform: rotate(330deg);
   transform: rotate(330deg);
 }
 .sk-circle .sk-circle2:before {
