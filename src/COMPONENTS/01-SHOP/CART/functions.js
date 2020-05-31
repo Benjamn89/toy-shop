@@ -41,3 +41,13 @@ export const enterPayment = () => {
     .classList.toggle("cart-payment-btn-p-out");
   document.querySelector(".sk-chase").classList.toggle("sk-chase-in");
 };
+
+export const waitForImage = () => {
+  const img = document.querySelector(".cart-no-items-img");
+  img.addEventListener("load", () => {
+    document
+      .querySelector(".cart-no-items-div")
+      .classList.add("cart-no-items-div-loaded");
+    document.querySelector(".sk-circle").classList.add("sk-circle-off");
+  });
+};
