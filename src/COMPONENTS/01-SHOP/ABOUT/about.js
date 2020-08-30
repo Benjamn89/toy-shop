@@ -44,7 +44,7 @@ class About extends Component {
               Welcome to <span>ToyShop</span>
             </p>
             <p className="about-second-p2">
-              We are sailing used toys at fair prices. <br />
+              We are selling used toys at fair prices. <br />
               With brand new technologies in just few clicks!
             </p>
           </div>
